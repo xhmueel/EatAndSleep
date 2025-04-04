@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b31hu3qyjrgct"]
+
+[ext_resource type="Script" path="res://Scripts/damaging.gd" id="1_t7t1k"]
+[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="2_vxcxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hxcr"]
+size = Vector2(126, 125)
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_t7t1k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1hxcr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vxcxv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
