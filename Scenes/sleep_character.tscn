@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bs8vjgp70nnqg"]
 
-[ext_resource type="Script" path="res://sleep_character.gd" id="1_gu5lk"]
+[ext_resource type="Script" path="res://Scripts/sleep_character.gd" id="1_gu5lk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhm1u"]
 
-[node name="Sleepy" type="CharacterBody2D"]
+[node name="Sleepy" type="CharacterBody2D" groups=["Sleepy"]]
 collision_mask = 12
 script = ExtResource("1_gu5lk")
 

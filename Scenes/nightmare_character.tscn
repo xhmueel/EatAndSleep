@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ba6kwjurgqlaq"]
 
-[ext_resource type="Script" path="res://nightmare_character.gd" id="1_5rfhl"]
+[ext_resource type="Script" path="res://Scripts/nightmare_character.gd" id="1_5rfhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvflf"]
 

@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-var nightmare_character_scene = preload("res://nightmare_character.tscn")
+var nightmare_character_scene = preload("res://Scenes/nightmare_character.tscn")
 
 var is_sleeping = false
 
