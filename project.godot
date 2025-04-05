@@ -85,3 +85,4 @@ sleep_down={
 2d_physics/layer_5="Eat"
 2d_physics/layer_6="Damaging"
 2d_physics/layer_7="Interactible"
+2d_physics/layer_8="WallsGoThroughEat"
