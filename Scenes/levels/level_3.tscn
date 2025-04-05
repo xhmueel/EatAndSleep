@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://1ressr4e3jpj"]
+[gd_scene load_steps=6 format=4 uid="uid://cvuqgvfmacbpx"]
 
 [ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_dj4ne"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_0kvgk"]

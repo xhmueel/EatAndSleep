@@ -4,6 +4,9 @@ const SPEED = 280.0
 const ACCEL = 2500.0
 const JUMP_VELOCITY = -400.0
 const FRICTION = 3000.0
+const COYOTE_TIME = 1.0
+const JUMP_BUFFER_TIME = 1.0
+const JUMP_COOLDOWN = COYOTE_TIME
 
 const EAT_STARTUP = 0.5
 
@@ -27,6 +30,9 @@ var eat_time = 0.0
 var is_eating = false
 
 var was_grounded = true
+var last_ground_time = 0.0
+var last_jump_input_time = JUMP_BUFFER_TIME + 1
+var last_jumped_time = JUMP_COOLDOWN + 1
 
 var facing = 1
 
@@ -88,9 +94,20 @@ func _physics_process(delta: float) -> void:
 		eat_area_shape.position.x *= -1
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("eat_up") and is_on_floor():
+	print("last_jumped_time ", last_jumped_time)
+	print("last_jump_input_time ", last_jump_input_time)
+	print("last_ground_time ", last_ground_time)
+	if Input.is_action_just_pressed("eat_up"):
+		last_jump_input_time = 0
+		
+	if (last_jumped_time > JUMP_COOLDOWN
+	and last_jump_input_time < JUMP_BUFFER_TIME
+	and last_ground_time < COYOTE_TIME):
 		animated_sprite.play("jump")
 		velocity.y = JUMP_VELOCITY
+		last_jumped_time = 0.0
+		last_jump_input_time = JUMP_BUFFER_TIME + 1
+		last_ground_time = COYOTE_TIME + 1
 		
 	# Gravity
 	if not is_on_floor():
@@ -98,8 +115,12 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("fall")
 		velocity.y += gravity * delta
 	
+	last_ground_time += delta
+	last_jumped_time += delta
+	last_jump_input_time += delta
 	if is_on_floor():
 		was_grounded = true
+		last_ground_time = 0.0
 	else:
 		was_grounded = false
 	
