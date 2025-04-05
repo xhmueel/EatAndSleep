@@ -217,7 +217,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Eat" type="CharacterBody2D"]
+[node name="Eat" type="CharacterBody2D" groups=["Players"]]
 collision_layer = 16
 collision_mask = 12
 script = ExtResource("1_berei")

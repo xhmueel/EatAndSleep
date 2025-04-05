@@ -26,6 +26,7 @@ window/stretch/aspect="expand"
 [global_group]
 
 Sleepy=""
+Players=""
 
 [input]
 
@@ -82,3 +83,5 @@ sleep_down={
 2d_physics/layer_3="NormalWalls"
 2d_physics/layer_4="WallsGoThroughNightmare"
 2d_physics/layer_5="Eat"
+2d_physics/layer_6="Damaging"
+2d_physics/layer_7="Interactible"

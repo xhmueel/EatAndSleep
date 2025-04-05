@@ -6,21 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydcvs"]
 size = Vector2(126, 125)
 
-[sub_resource type="Animation" id="Animation_x78p5"]
-resource_name = "disappear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area/Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_c7jpj"]
 length = 0.001
 tracks/0/type = "value"
@@ -33,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_j1jhd"]
@@ -51,6 +36,21 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_x78p5"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p4m5a"]
 _data = {
 "RESET": SubResource("Animation_c7jpj"),
@@ -61,6 +61,8 @@ _data = {
 [node name="Spikes" type="Node2D"]
 
 [node name="Area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 19
 script = ExtResource("1_wy275")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
@@ -68,12 +70,13 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ydcvs")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area"]
-modulate = Color(1, 1, 1, 0)
 texture = ExtResource("1_1qy3s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_p4m5a")
 }
+autoplay = "RESET"
 
+[connection signal="area_entered" from="Area" to="Area" method="_on_area_entered"]
 [connection signal="body_entered" from="Area" to="Area" method="_on_body_entered"]
