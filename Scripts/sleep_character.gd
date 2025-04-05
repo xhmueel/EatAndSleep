@@ -1,11 +1,13 @@
-extends CharacterBody2D
+class_name Sleepy extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const FRICTION = 10.0
 
 var nightmare_character_scene = preload("res://Scenes/nightmare_character.tscn")
 
 var is_sleeping = false
+var got_spit = false
 
 func _physics_process(delta: float) -> void:
 	if is_sleeping:
@@ -21,8 +23,14 @@ func process_sleeping(delta : float) -> void:
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
-	velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	if got_spit:
+		velocity.x = move_toward(velocity.x, 0, FRICTION)
+		# End spit physics once you stop
+		if velocity.length_squared() < 0.01:
+			got_spit = false
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	
 func process_awake(delta : float) -> void:
@@ -44,10 +52,11 @@ func process_awake(delta : float) -> void:
 	var direction := Input.get_axis("sleep_left", "sleep_right")
 	if direction:
 		velocity.x = direction * SPEED
-	else:
+	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func spawn_nightmare() -> void:
 	var nightmare_character = nightmare_character_scene.instantiate()
-	self.add_child(nightmare_character)
+	get_parent().add_child(nightmare_character)
+	(nightmare_character as Node2D).position = self.position
 	

@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dik8ukrhyif1m"]
+[gd_scene load_steps=4 format=3 uid="uid://dik8ukrhyif1m"]
 
-[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="1_4h30q"]
 [ext_resource type="Script" path="res://Scripts/eat.gd" id="1_berei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2du3"]
-size = Vector2(118, 117)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvvek"]
 size = Vector2(480, 362)
@@ -14,9 +12,6 @@ collision_layer = 16
 collision_mask = 12
 script = ExtResource("1_berei")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4h30q")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_h2du3")
@@ -24,8 +19,8 @@ shape = SubResource("RectangleShape2D_h2du3")
 [node name="EatArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EatArea"]
-position = Vector2(193, 1)
-scale = Vector2(0.799252, 0.799252)
+position = Vector2(75, 0)
+scale = Vector2(0.316349, 0.316349)
 shape = SubResource("RectangleShape2D_qvvek")
 
 [connection signal="body_entered" from="EatArea" to="." method="_on_eat_area_body_entered"]
