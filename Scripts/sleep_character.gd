@@ -2,7 +2,7 @@ class_name Sleepy extends CharacterBody2D
 
 const SPEED = 220.0
 const ACCEL = 2000.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -500.0
 const SPIT_FRICTION = 10.0
 const GROUND_FRICTION = 12000.0
 const AIR_FRICTION = 4000.0
