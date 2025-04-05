@@ -1,17 +1,18 @@
 [gd_scene load_steps=8 format=3 uid="uid://dc07i21t8p264"]
 
-[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="1_1qy3s"]
 [ext_resource type="Script" path="res://Scripts/damaging.gd" id="1_wy275"]
+[ext_resource type="Texture2D" uid="uid://0wdyc8jmppl1" path="res://Assets/fork.png" id="2_euh12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydcvs"]
-size = Vector2(126, 125)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wynhr"]
+radius = 13.0
+height = 63.0
 
 [sub_resource type="Animation" id="Animation_c7jpj"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area/Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +27,7 @@ resource_name = "appear"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area/Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +42,7 @@ resource_name = "disappear"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area/Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,19 +59,20 @@ _data = {
 "disappear": SubResource("Animation_x78p5")
 }
 
-[node name="Spikes" type="Node2D"]
-
-[node name="Area" type="Area2D" parent="."]
+[node name="Area" type="Area2D"]
 collision_layer = 32
 collision_mask = 19
 script = ExtResource("1_wy275")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_ydcvs")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_wynhr")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area"]
-texture = ExtResource("1_1qy3s")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(6, 0)
+scale = Vector2(0.511876, 0.511876)
+texture = ExtResource("2_euh12")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -78,5 +80,5 @@ libraries = {
 }
 autoplay = "RESET"
 
-[connection signal="area_entered" from="Area" to="Area" method="_on_area_entered"]
-[connection signal="body_entered" from="Area" to="Area" method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

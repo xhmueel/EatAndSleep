@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/button.gd" id="4_nxyl1"]
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_yojd7"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="6_0ot5l"]
-[ext_resource type="PackedScene" path="res://Scenes/button.tscn" id="7_4665n"]
+[ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="7_4665n"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="8_yvdqh"]
-[ext_resource type="PackedScene" path="res://Scenes/exit.tscn" id="9_oatok"]
+[ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="9_oatok"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
 texture = ExtResource("1_b6re4")
@@ -66,118 +66,151 @@ position = Vector2(1257, 1002)
 z_index = 0
 position = Vector2(198, 634)
 
-[node name="Button" type="Node2D" parent="." node_paths=PackedStringArray("platforms")]
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button" type="Node2D" parent="Buttons" node_paths=PackedStringArray("platforms")]
 z_index = 1
 position = Vector2(1569, 539)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("4_nxyl1")
-platforms = [NodePath("../Platform"), NodePath("../Platform3")]
+platforms = [NodePath("../../Platforms/Platform"), NodePath("../../Platforms/Platform3")]
 
-[node name="Area2D" type="Area2D" parent="Button"]
+[node name="Area2D" type="Area2D" parent="Buttons/Button"]
 collision_layer = 64
 collision_mask = 19
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Button/Area2D"]
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_d5bpe")
 
-[node name="Sprite2D" type="Sprite2D" parent="Button"]
+[node name="Sprite2D" type="Sprite2D" parent="Buttons/Button"]
 texture = ExtResource("5_yojd7")
 
-[node name="Spikes" parent="." instance=ExtResource("6_0ot5l")]
-position = Vector2(770, 734)
-scale = Vector2(1.8, 0.5)
-
-[node name="Button2" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("7_4665n")]
-position = Vector2(93, 605)
+[node name="Button2" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("7_4665n")]
+position = Vector2(93, 609)
 scale = Vector2(0.5, 0.5)
-platforms = [NodePath("../Platform2")]
+platforms = [NodePath("../../Platforms/Platform2")]
 
-[node name="Platform" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" type="Node2D" parent="Platforms"]
+z_index = 1
 position = Vector2(757, 392)
 script = ExtResource("8_yvdqh")
 speed = 300
 
-[node name="Path2D" type="Path2D" parent="Platform"]
+[node name="Path2D" type="Path2D" parent="Platforms/Platform"]
 curve = SubResource("Curve2D_3bvfx")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform/Path2D"]
 rotates = false
 loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform/Path2D/PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
 update_scale = false
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform/Path2D/PathFollow2D"]
 scale = Vector2(1.5, 0.3)
 collision_layer = 4
 collision_mask = 19
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_7iup7")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 texture = ExtResource("5_yojd7")
 
-[node name="Platform2" type="Node2D" parent="."]
+[node name="Platform2" type="Node2D" parent="Platforms"]
+z_index = 1
 position = Vector2(1561, 813)
 script = ExtResource("8_yvdqh")
 speed = 300
 
-[node name="Path2D" type="Path2D" parent="Platform2"]
+[node name="Path2D" type="Path2D" parent="Platforms/Platform2"]
 curve = SubResource("Curve2D_wlnkd")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Platform2/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform2/Path2D"]
 position = Vector2(0, -50)
 rotates = false
 loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform2/Path2D/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform2/Path2D/PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
 update_scale = false
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform2/Path2D/PathFollow2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform2/Path2D/PathFollow2D"]
 scale = Vector2(1.3, 0.3)
 collision_layer = 4
 collision_mask = 19
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_7iup7")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
 texture = ExtResource("5_yojd7")
 
-[node name="Platform3" type="Node2D" parent="."]
+[node name="Platform3" type="Node2D" parent="Platforms"]
+z_index = 1
 position = Vector2(1795, 560)
 script = ExtResource("8_yvdqh")
 speed = 80
 
-[node name="Path2D" type="Path2D" parent="Platform3"]
+[node name="Path2D" type="Path2D" parent="Platforms/Platform3"]
 curve = SubResource("Curve2D_0qfll")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Platform3/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform3/Path2D"]
 position = Vector2(0, -400)
 rotates = false
 loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform3/Path2D/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform3/Path2D/PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
 update_scale = false
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform3/Path2D/PathFollow2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform3/Path2D/PathFollow2D"]
 scale = Vector2(1.8, 0.3)
 collision_layer = 4
 collision_mask = 19
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_7iup7")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 texture = ExtResource("5_yojd7")
 
 [node name="Exit" parent="." instance=ExtResource("9_oatok")]
 position = Vector2(1352, 79)
 
-[connection signal="body_entered" from="Button/Area2D" to="Button" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Button/Area2D" to="Button" method="_on_area_2d_body_exited"]
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Spikes" parent="Spikes" instance=ExtResource("6_0ot5l")]
+position = Vector2(679, 736)
+level_to_reload = "res://Scenes/levels/level_4.tscn"
+
+[node name="Spikes2" parent="Spikes" instance=ExtResource("6_0ot5l")]
+position = Vector2(738, 736)
+level_to_reload = "res://Scenes/levels/level_4.tscn"
+
+[node name="Spikes3" parent="Spikes" instance=ExtResource("6_0ot5l")]
+position = Vector2(801, 736)
+level_to_reload = "res://Scenes/levels/level_4.tscn"
+
+[node name="Spikes5" parent="Spikes" instance=ExtResource("6_0ot5l")]
+position = Vector2(1504, 1055)
+level_to_reload = "res://Scenes/levels/level_4.tscn"
+
+[node name="Spikes6" parent="Spikes" instance=ExtResource("6_0ot5l")]
+position = Vector2(1563, 1055)
+level_to_reload = "res://Scenes/levels/level_4.tscn"
+
+[node name="Spikes7" parent="Spikes" instance=ExtResource("6_0ot5l")]
+position = Vector2(1626, 1055)
+level_to_reload = "res://Scenes/levels/level_4.tscn"
+
+[node name="Spikes4" parent="Spikes" instance=ExtResource("6_0ot5l")]
+position = Vector2(860, 736)
+level_to_reload = "res://Scenes/levels/level_4.tscn"
+
+[connection signal="body_entered" from="Buttons/Button/Area2D" to="Buttons/Button" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Buttons/Button/Area2D" to="Buttons/Button" method="_on_area_2d_body_exited"]

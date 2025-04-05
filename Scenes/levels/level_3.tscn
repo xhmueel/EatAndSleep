@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cvuqgvfmacbpx"]
+[gd_scene load_steps=13 format=4 uid="uid://cvuqgvfmacbpx"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_gasat"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_0kvgk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="6_fh3bq"]
 [ext_resource type="Script" path="res://Scripts/button.gd" id="7_rmucy"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="8_yhnuf"]
+[ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="9_cfxp7"]
 
 [sub_resource type="Curve2D" id="Curve2D_2ikvw"]
 _data = {
@@ -89,6 +90,36 @@ texture = ExtResource("6_fh3bq")
 [node name="Exit" parent="." instance=ExtResource("8_yhnuf")]
 position = Vector2(1737, 143)
 level_to_load = "res://Scenes/levels/level_4.tscn"
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Spikes5" parent="Spikes" instance=ExtResource("9_cfxp7")]
+position = Vector2(802, 1056)
+level_to_reload = "res://Scenes/levels/level_3.tscn"
+
+[node name="Spikes6" parent="Spikes" instance=ExtResource("9_cfxp7")]
+position = Vector2(861, 1056)
+level_to_reload = "res://Scenes/levels/level_3.tscn"
+
+[node name="Spikes7" parent="Spikes" instance=ExtResource("9_cfxp7")]
+position = Vector2(924, 1056)
+level_to_reload = "res://Scenes/levels/level_3.tscn"
+
+[node name="Spikes8" parent="Spikes" instance=ExtResource("9_cfxp7")]
+position = Vector2(984, 1054)
+level_to_reload = "res://Scenes/levels/level_3.tscn"
+
+[node name="Spikes9" parent="Spikes" instance=ExtResource("9_cfxp7")]
+position = Vector2(1043, 1054)
+level_to_reload = "res://Scenes/levels/level_3.tscn"
+
+[node name="Spikes10" parent="Spikes" instance=ExtResource("9_cfxp7")]
+position = Vector2(1106, 1054)
+level_to_reload = "res://Scenes/levels/level_3.tscn"
+
+[node name="Spikes11" parent="Spikes" instance=ExtResource("9_cfxp7")]
+position = Vector2(1166, 1054)
+level_to_reload = "res://Scenes/levels/level_3.tscn"
 
 [connection signal="body_entered" from="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D" to="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D" to="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2" method="_on_area_2d_body_exited"]

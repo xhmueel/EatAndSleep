@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dnn83k2a68qc1"]
+[gd_scene load_steps=14 format=4 uid="uid://dnn83k2a68qc1"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="2_io5co"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_mr2n8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_he0tt"]
 [ext_resource type="Script" path="res://Scripts/button.gd" id="6_kf8sr"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_lyxql"]
+[ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="8_eyrjm"]
 
 [sub_resource type="Curve2D" id="Curve2D_6dlps"]
 _data = {
@@ -138,6 +139,20 @@ texture = ExtResource("5_he0tt")
 [node name="Exit" parent="." instance=ExtResource("7_lyxql")]
 position = Vector2(1282, 78)
 level_to_load = "res://Scenes/main_menu.tscn"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Spikes5" parent="Node2D" instance=ExtResource("8_eyrjm")]
+position = Vector2(930, 1054)
+level_to_reload = "res://Scenes/levels/level_5.tscn"
+
+[node name="Spikes6" parent="Node2D" instance=ExtResource("8_eyrjm")]
+position = Vector2(989, 1054)
+level_to_reload = "res://Scenes/levels/level_5.tscn"
+
+[node name="Spikes7" parent="Node2D" instance=ExtResource("8_eyrjm")]
+position = Vector2(1052, 1054)
+level_to_reload = "res://Scenes/levels/level_5.tscn"
 
 [connection signal="body_entered" from="Button/Area2D" to="Button" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Button/Area2D" to="Button" method="_on_area_2d_body_exited"]
