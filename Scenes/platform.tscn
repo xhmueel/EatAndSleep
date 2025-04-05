@@ -4,10 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="1_tqd4p"]
 
 [sub_resource type="Curve2D" id="Curve2D_onw2o"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 380, -3.33331)
-}
-point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0r14"]
 size = Vector2(125, 125)
@@ -19,20 +15,18 @@ script = ExtResource("1_tqd4p")
 curve = SubResource("Curve2D_onw2o")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-rotation = 0.0192284
 rotates = false
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D/PathFollow2D"]
-scale = Vector2(1, 1)
 collision_layer = 4
 collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/AnimatableBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a0r14")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/AnimatableBody2D"]
