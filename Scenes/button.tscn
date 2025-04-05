@@ -7,6 +7,7 @@
 size = Vector2(125, 122)
 
 [node name="Button" type="Node2D"]
+z_index = 1
 script = ExtResource("1_omlil")
 
 [node name="Area2D" type="Area2D" parent="."]

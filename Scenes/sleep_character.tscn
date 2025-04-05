@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b27d8regs48ia" path="res://Assets/sleep_sleeping.png" id="5_d4wqn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhm1u"]
-height = 29.0076
+radius = 26.0
+height = 150.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8vr1"]
 atlas = ExtResource("3_l5ncy")
@@ -230,12 +231,12 @@ animations = [{
 }]
 
 [node name="Sleepy" type="CharacterBody2D" groups=["Players", "Sleepy"]]
+z_index = 1
 collision_mask = 12
 script = ExtResource("1_gu5lk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -78)
-scale = Vector2(3.56, 5.24)
 shape = SubResource("CapsuleShape2D_lhm1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
