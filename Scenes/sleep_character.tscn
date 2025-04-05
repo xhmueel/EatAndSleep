@@ -232,7 +232,7 @@ animations = [{
 
 [node name="Sleepy" type="CharacterBody2D" groups=["Players", "Sleepy"]]
 z_index = 1
-collision_mask = 12
+collision_mask = 140
 script = ExtResource("1_gu5lk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
