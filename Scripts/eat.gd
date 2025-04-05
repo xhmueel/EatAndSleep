@@ -10,6 +10,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var eat_area_shape: CollisionShape2D
 
+@onready var animated_sprite = $AnimatedSprite2D
+
 var sleepy_available = false
 var sleepy_ref: Sleepy = null
 var sleepy_eaten = false
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 			if sleepy_available and sleepy_ref and sleepy_ref.is_sleeping:
 				sleepy_ref.process_mode = Node.PROCESS_MODE_DISABLED
 				sleepy_eaten = true
+				sleepy_ref.visible = false
 		# Spit sleepy
 		elif sleepy_eaten:
 			sleepy_ref.process_mode = Node.PROCESS_MODE_INHERIT
@@ -46,6 +49,7 @@ func _process(delta: float) -> void:
 			sleepy_ref.position.y -= 1
 			sleepy_ref.velocity = Vector2(SPIT_SPEED_X * facing, SPIT_SPEED_Y)
 			sleepy_ref.got_spit = true
+			sleepy_ref.visible = true
 		
 	# Movement
 	var direction = Input.get_axis("eat_left", "eat_right")
@@ -53,7 +57,10 @@ func _process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 		facing = 1 if direction > 0 else -1
+		animated_sprite.play("walk")
+		animated_sprite.flip_h = false if direction > 0 else 1
 	else:
+		animated_sprite.stop()
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	if facing != previous_facing:

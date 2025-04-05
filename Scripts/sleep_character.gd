@@ -9,6 +9,12 @@ var nightmare_character_scene = preload("res://Scenes/nightmare_character.tscn")
 var is_sleeping = false
 var got_spit = false
 
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var collision_shape = $CollisionShape2D
+
+func _ready() -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	if is_sleeping:
 		process_sleeping(delta)
@@ -47,7 +53,10 @@ func process_awake(delta : float) -> void:
 	if direction:
 		velocity = velocity.lerp(temp_v * SPEED, delta*2)
 		#velocity.x = direction * SPEED
+		animated_sprite.play("default")
+		animated_sprite.flip_h = true if direction < 0 else false
 	else:
+		animated_sprite.stop()
 		if not is_on_floor():
 			velocity = velocity.lerp(temp_v * SPEED, delta*2)
 		else:

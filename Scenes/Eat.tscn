@@ -1,11 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://dik8ukrhyif1m"]
+[gd_scene load_steps=14 format=3 uid="uid://dik8ukrhyif1m"]
 
 [ext_resource type="Script" path="res://Scripts/eat.gd" id="1_berei"]
+[ext_resource type="Texture2D" uid="uid://c1ajuufku73wm" path="res://Assets/eat_walk.png" id="2_wf2m1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2du3"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_im5nl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvvek"]
-size = Vector2(480, 362)
+size = Vector2(363.282, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p114p"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(0, 0, 233, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egrqb"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(233, 0, 233, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bgoq"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(466, 0, 233, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhmn3"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(699, 0, 233, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q6qc"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(932, 0, 233, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s1rc"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(1165, 0, 233, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7bl2"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(1398, 0, 233, 382)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff3yg"]
+atlas = ExtResource("2_wf2m1")
+region = Rect2(1631, 0, 233, 382)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wuvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p114p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egrqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bgoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhmn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q6qc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s1rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7bl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff3yg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Eat" type="CharacterBody2D"]
 collision_layer = 16
@@ -13,15 +78,23 @@ collision_mask = 12
 script = ExtResource("1_berei")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_h2du3")
+position = Vector2(1, -74.5)
+scale = Vector2(2.48, 4.88)
+shape = SubResource("CapsuleShape2D_im5nl")
 
 [node name="EatArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EatArea"]
-position = Vector2(75, 0)
-scale = Vector2(0.316349, 0.316349)
+position = Vector2(56.5381, -88)
+scale = Vector2(0.316349, 0.476348)
 shape = SubResource("RectangleShape2D_qvvek")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -95)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8wuvl")
+animation = &"walk"
+frame_progress = 0.705811
 
 [connection signal="body_entered" from="EatArea" to="." method="_on_eat_area_body_entered"]
 [connection signal="body_exited" from="EatArea" to="." method="_on_eat_area_body_exited"]

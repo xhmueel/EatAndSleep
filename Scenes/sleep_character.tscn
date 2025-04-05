@@ -1,12 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs8vjgp70nnqg"]
+[gd_scene load_steps=15 format=3 uid="uid://bs8vjgp70nnqg"]
 
 [ext_resource type="Script" path="res://Scripts/sleep_character.gd" id="1_gu5lk"]
+[ext_resource type="Texture2D" uid="uid://d2u7n42sdlplu" path="res://Assets/sleep_walk.png" id="2_ati1r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhm1u"]
+height = 29.0076
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bi2d"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(0, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww131"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(165, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibho5"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(330, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho2ww"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(495, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyocx"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(660, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3lbq"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(825, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylbav"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(990, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjwik"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(1155, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwtdr"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(1320, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wtin"]
+atlas = ExtResource("2_ati1r")
+region = Rect2(1485, 0, 165, 327)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uu4ww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bi2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww131")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibho5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho2ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyocx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3lbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylbav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjwik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwtdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wtin")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Sleepy" type="CharacterBody2D" groups=["Sleepy"]]
 collision_mask = 12
 script = ExtResource("1_gu5lk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -78)
+scale = Vector2(3.56, 5.24)
 shape = SubResource("CapsuleShape2D_lhm1u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -82)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_uu4ww")
+frame_progress = 0.280677
