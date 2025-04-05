@@ -28,3 +28,4 @@ position = Vector2(322, 189)
 shape = SubResource("RectangleShape2D_trd0p")
 
 [node name="Eat" parent="." instance=ExtResource("2_sdddv")]
+visible = false
