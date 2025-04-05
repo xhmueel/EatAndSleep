@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://n2604dv82jc5"]
+[gd_scene load_steps=7 format=4 uid="uid://n2604dv82jc5"]
 
 [ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_7qpsa"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_yptaq"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_uydrd"]
+[ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="4_rcfs3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
 texture = ExtResource("1_7qpsa")
@@ -33,3 +34,7 @@ position = Vector2(898, 1006)
 
 [node name="Eat" parent="." instance=ExtResource("3_uydrd")]
 position = Vector2(978, 1010)
+
+[node name="Exit" parent="." instance=ExtResource("4_rcfs3")]
+position = Vector2(1575, 905)
+level_to_load = "res://Scenes/levels/level_2.tscn"

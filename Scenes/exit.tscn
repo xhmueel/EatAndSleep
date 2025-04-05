@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmici5dcwxg8r"]
+
+[ext_resource type="Script" path="res://Scenes/exit.gd" id="1_781ou"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbc2g"]
+size = Vector2(152, 218)
+
+[node name="Exit" type="Area2D"]
+collision_mask = 17
+script = ExtResource("1_781ou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bbc2g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
