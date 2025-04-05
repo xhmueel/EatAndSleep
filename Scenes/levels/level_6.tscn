@@ -1,0 +1,345 @@
+[gd_scene load_steps=19 format=4 uid="uid://v536v8xajlp"]
+
+[ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_4brl5"]
+[ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_stv1q"]
+[ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_y2cku"]
+[ext_resource type="Script" path="res://Scripts/platform.gd" id="4_4rbkk"]
+[ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_ayy6p"]
+[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_robkb"]
+[ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_tfjpn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
+texture = ExtResource("1_4brl5")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_diton"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 19
+physics_layer_1/collision_layer = 8
+physics_layer_1/collision_mask = 17
+sources/0 = SubResource("TileSetAtlasSource_4n316")
+
+[sub_resource type="Curve2D" id="Curve2D_kmcl7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -220, 0, 0, 0, 0, 410, -220)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
+size = Vector2(125, 125)
+
+[sub_resource type="Curve2D" id="Curve2D_nm1i6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 300, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_vvj81"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -50)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_dly6b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 0, 0, 0, 0, 0, 240, -150, 0, 0, 0, 0, -200, -150)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_xjr75"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -150, 0, 0, 0, 0, 0, -320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_o7xh3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -200, 0, 0, 0, 0, 0, -490, 0, 0, 0, 0, 105, -490)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_tldrc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 370, -100, 0, 0, 0, 0, 370, -450)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_ug1jt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -150, 0, 0, 0, 0, -280, -150)
+}
+point_count = 3
+
+[node name="Level4" type="Node2D"]
+
+[node name="Map" type="Node" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Map"]
+tile_map_data = PackedByteArray("AAALABAAAAABAAAAAAATABAAAAABAAAAAAAUABAAAAABAAAAAAAVABAAAAABAAAAAAAWABAAAAABAAAAAAAXABAAAAABAAAAAAAYABAAAAABAAAAAAAZABAAAAABAAAAAAAaABAAAAABAAAAAAAbABAAAAABAAAAAAAcABAAAAABAAAAAAAdABAAAAABAAAAAAAAABAAAAABAAAAAAABABAAAAABAAAAAAACABAAAAABAAAAAAADABAAAAABAAAAAAAEABAAAAABAAAAAAAFABAAAAABAAAAAAAGABAAAAABAAAAAAAHABAAAAABAAAAAAAIABAAAAABAAAAAAAJABAAAAABAAAAAAAKABAAAAABAAAAAAAMABAAAAABAAAAAAARABAAAAABAAAAAAASABAAAAABAAAAAAD/////AAABAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAD//wUAAAABAAAAAAD//wYAAAABAAAAAAD//wcAAAABAAAAAAD//wgAAAABAAAAAAD//wkAAAABAAAAAAD//woAAAABAAAAAAD//wsAAAABAAAAAAD//wwAAAABAAAAAAD//w0AAAABAAAAAAD//w4AAAABAAAAAAD//w8AAAABAAAAAAD//xAAAAABAAAAAAAeAP//AAABAAAAAAAeAAAAAAABAAAAAAAeAAEAAAABAAAAAAAeAAIAAAABAAAAAAAeAAMAAAABAAAAAAAeAAQAAAABAAAAAAAeAAUAAAABAAAAAAAeAAYAAAABAAAAAAAeAAcAAAABAAAAAAAeAAgAAAABAAAAAAAeAAkAAAABAAAAAAAeAAoAAAABAAAAAAAeAAsAAAABAAAAAAAeAAwAAAABAAAAAAAeAA0AAAABAAAAAAAeAA4AAAABAAAAAAAeAA8AAAABAAAAAAAeABAAAAABAAAAAAAHAAMAAAABAAAAAAALAAMAAAABAAAAAAAMAAMAAAABAAAAAAANAAMAAAABAAAAAAARAAMAAAABAAAAAAASAAMAAAABAAAAAAATAAMAAAABAAAAAAAUAAMAAAABAAAAAAAVAAMAAAABAAAAAAAWAAMAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAQAAQAAAABAAAAAAAQAAMAAAABAAAAAAANAAQAAAABAAAAAAAIAAMAAAABAAAAAAAJAAMAAAABAAAAAAAKAAMAAAABAAAAAAAXAAMAAAABAAAAAAAYAAMAAAABAAAAAAAYAAQAAAABAAAAAAAXAAQAAAABAAAAAAAWAAQAAAABAAAAAAAVAAQAAAABAAAAAAAUAAQAAAABAAAAAAATAAQAAAABAAAAAAASAAQAAAABAAAAAAARAAQAAAABAAAAAAAMAAQAAAABAAAAAAALAAQAAAABAAAAAAAKAAQAAAABAAAAAAAJAAQAAAABAAAAAAAIAAQAAAABAAAAAAAHAAQAAAABAAAAAAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAAQABAAAAABAAAAAAAPABAAAAABAAAAAAAOABAAAAABAAAAAAANABAAAAABAAAAAAAPAA8AAAABAAAAAAAOAA8AAAABAAAAAAAOAA4AAAABAAAAAAAPAA4AAAABAAAAAAAPAA0AAAABAAAAAAAPAAwAAAABAAAAAAAPAAsAAAABAAAAAAAPAAoAAAABAAAAAAAOAAoAAAABAAAAAAAOAAkAAAABAAAAAAAOAAgAAAABAAAAAAAOAAcAAAABAAAAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAPAAUAAAABAAAAAAAPAAQAAAABAAAAAAAPAAMAAAABAAAAAAAOAAMAAAABAAAAAAAOAAQAAAABAAAAAAAOAAUAAAABAAAAAAAPAAgAAAABAAAAAAAPAAcAAAABAAAAAAAPAAkAAAABAAAAAAAOAAsAAAABAAAAAAAOAAwAAAABAAAAAAAOAA0AAAABAAAAAAA=")
+tile_set = SubResource("TileSet_diton")
+
+[node name="Sleepy" parent="." instance=ExtResource("2_stv1q")]
+position = Vector2(681, 621)
+
+[node name="Eat" parent="." instance=ExtResource("3_y2cku")]
+position = Vector2(1480, 888)
+
+[node name="Exit" parent="." instance=ExtResource("7_tfjpn")]
+position = Vector2(957, 78)
+
+[node name="Button" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(147, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform")]
+
+[node name="Button2" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(311, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform2")]
+
+[node name="Button3" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(563, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform3")]
+
+[node name="Button4" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(746, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform4")]
+
+[node name="Button5" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(1160, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform5")]
+
+[node name="Button6" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(1324, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform6")]
+
+[node name="Button7" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(1584, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform7")]
+
+[node name="Button8" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+position = Vector2(1767, 990)
+scale = Vector2(0.5, 0.5)
+platforms = [NodePath("../Platform8")]
+
+[node name="Platform" type="Node2D" parent="."]
+position = Vector2(1208, 725)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform"]
+curve = SubResource("Curve2D_kmcl7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
+
+[node name="Platform2" type="Node2D" parent="."]
+position = Vector2(1744, 141)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform2"]
+curve = SubResource("Curve2D_nm1i6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform2/Path2D"]
+position = Vector2(0, 300)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform2/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform2/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
+
+[node name="Platform3" type="Node2D" parent="."]
+position = Vector2(1467, 958)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform3"]
+curve = SubResource("Curve2D_vvj81")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform3/Path2D"]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform3/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform3/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
+
+[node name="Platform4" type="Node2D" parent="."]
+position = Vector2(1609, 779)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform4"]
+curve = SubResource("Curve2D_dly6b")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform4/Path2D"]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform4/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform4/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform4/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
+
+[node name="Platform5" type="Node2D" parent="."]
+position = Vector2(271, 824)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform5"]
+curve = SubResource("Curve2D_xjr75")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform5/Path2D"]
+position = Vector2(0, -150)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform5/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform5/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform5/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
+
+[node name="Platform6" type="Node2D" parent="."]
+position = Vector2(69, 690)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform6"]
+curve = SubResource("Curve2D_o7xh3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform6/Path2D"]
+position = Vector2(0, -200)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform6/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform6/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform6/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
+
+[node name="Platform7" type="Node2D" parent="."]
+position = Vector2(447, 951)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform7"]
+curve = SubResource("Curve2D_tldrc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform7/Path2D"]
+position = Vector2(0, -1)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform7/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform7/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform7/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
+
+[node name="Platform8" type="Node2D" parent="."]
+position = Vector2(666, 654)
+script = ExtResource("4_4rbkk")
+
+[node name="Path2D" type="Path2D" parent="Platform8"]
+curve = SubResource("Curve2D_ug1jt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform8/Path2D"]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform8/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform8/Path2D/PathFollow2D"]
+scale = Vector2(0.8, 0.2)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform8/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform8/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("5_robkb")
