@@ -6,6 +6,9 @@ const JUMP_VELOCITY = -500.0
 const SPIT_FRICTION = 10.0
 const GROUND_FRICTION = 12000.0
 const AIR_FRICTION = 4000.0
+const COYOTE_TIME = 1.0
+const JUMP_BUFFER_TIME = 1.0
+const JUMP_COOLDOWN = COYOTE_TIME
 
 const SLEEP_OFFSET_Y = 42.0
 
@@ -14,6 +17,9 @@ var nightmare_character_scene = preload("res://Scenes/nightmare_character.tscn")
 var is_sleeping = false
 var got_spit = false
 var was_grounded = true
+var last_ground_time = 0.0
+var last_jump_input_time = JUMP_BUFFER_TIME + 1
+var last_jumped_time = JUMP_COOLDOWN + 1
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
@@ -71,9 +77,17 @@ func process_awake(delta : float) -> void:
 				animated_sprite.play("idle")
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("sleep_up") and is_on_floor():
+	if Input.is_action_just_pressed("eat_up"):
+		last_jump_input_time = 0
+		
+	if (last_jumped_time > JUMP_COOLDOWN
+	and last_jump_input_time < JUMP_BUFFER_TIME
+	and last_ground_time < COYOTE_TIME):
 		animated_sprite.play("jump")
 		velocity.y = JUMP_VELOCITY
+		last_jumped_time = 0.0
+		last_jump_input_time = JUMP_BUFFER_TIME + 1
+		last_ground_time = COYOTE_TIME + 1
 		
 	# Add the gravity.
 	if not is_on_floor():
@@ -81,8 +95,13 @@ func process_awake(delta : float) -> void:
 			animated_sprite.play("fall")
 		velocity += get_gravity() * delta
 		
+	last_ground_time += delta
+	last_jumped_time += delta
+	last_jump_input_time += delta
+		
 	if is_on_floor():
 		was_grounded = true
+		last_ground_time = 0
 	else:
 		was_grounded = false
 	

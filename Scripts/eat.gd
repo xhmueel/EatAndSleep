@@ -94,9 +94,6 @@ func _physics_process(delta: float) -> void:
 		eat_area_shape.position.x *= -1
 		
 	# Handle jump.
-	print("last_jumped_time ", last_jumped_time)
-	print("last_jump_input_time ", last_jump_input_time)
-	print("last_ground_time ", last_ground_time)
 	if Input.is_action_just_pressed("eat_up"):
 		last_jump_input_time = 0
 		
