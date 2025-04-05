@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b31hu3qyjrgct"]
+[gd_scene load_steps=17 format=3 uid="uid://b31hu3qyjrgct"]
 
 [ext_resource type="Script" path="res://Scripts/firebal.gd" id="1_bnk5e"]
 [ext_resource type="Script" path="res://Scripts/fireballBehavior.gd" id="1_ugvuq"]
-[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="2_vxcxv"]
 [ext_resource type="Script" path="res://Scripts/blinking.gd" id="3_dkncv"]
+[ext_resource type="Texture2D" uid="uid://b5ogevp8pu50m" path="res://Assets/fireball.png" id="3_ygli3"]
 
 [sub_resource type="Curve2D" id="Curve2D_ru63d"]
 _data = {
@@ -13,6 +13,42 @@ point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hxcr"]
 size = Vector2(126, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuca7"]
+atlas = ExtResource("3_ygli3")
+region = Rect2(0, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqvla"]
+atlas = ExtResource("3_ygli3")
+region = Rect2(275, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxpjc"]
+atlas = ExtResource("3_ygli3")
+region = Rect2(550, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r26ag"]
+atlas = ExtResource("3_ygli3")
+region = Rect2(275, 0, 275, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1h3l2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuca7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqvla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxpjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r26ag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="Animation" id="Animation_l5cir"]
 length = 0.001
@@ -153,8 +189,10 @@ script = ExtResource("1_ugvuq")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_1hxcr")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Area"]
-texture = ExtResource("2_vxcxv")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area"]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_1h3l2")
+autoplay = "default"
 
 [node name="Blinking" type="Node2D" parent="Path2D/PathFollow2D/Area"]
 script = ExtResource("3_dkncv")

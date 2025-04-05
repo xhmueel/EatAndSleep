@@ -3,7 +3,7 @@ extends Damaging
 @onready var parent : Node2D = $"../../.."
 @onready var path: PathFollow2D = $".."
 @onready var area : Area2D = $"."
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	anim = $"../../../AnimationPlayer"

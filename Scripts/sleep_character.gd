@@ -6,8 +6,8 @@ const JUMP_VELOCITY = -500.0
 const SPIT_FRICTION = 10.0
 const GROUND_FRICTION = 12000.0
 const AIR_FRICTION = 4000.0
-const COYOTE_TIME = 1.0
-const JUMP_BUFFER_TIME = 1.0
+const COYOTE_TIME = 0.2
+const JUMP_BUFFER_TIME = 0.2
 const JUMP_COOLDOWN = COYOTE_TIME
 
 const SLEEP_OFFSET_Y = 42.0
@@ -38,6 +38,8 @@ func _physics_process(delta: float) -> void:
 func process_sleeping(delta : float) -> void:
 	if Input.is_action_just_pressed("sleep_toggle"):
 		animated_sprite.position.y -= SLEEP_OFFSET_Y
+		collision_shape.position.y -= SLEEP_OFFSET_Y - 3
+		collision_shape.scale.y += 2
 		is_sleeping = false
 		
 	if not animated_sprite.is_playing():
@@ -77,7 +79,7 @@ func process_awake(delta : float) -> void:
 				animated_sprite.play("idle")
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("eat_up"):
+	if Input.is_action_just_pressed("sleep_up"):
 		last_jump_input_time = 0
 		
 	if (last_jumped_time > JUMP_COOLDOWN
@@ -109,6 +111,8 @@ func process_awake(delta : float) -> void:
 		is_sleeping = true
 		animated_sprite.play("falling_asleep")
 		animated_sprite.position.y += SLEEP_OFFSET_Y
+		collision_shape.position.y += SLEEP_OFFSET_Y + 3
+		collision_shape.scale.y -= 2
 		velocity = Vector2(0, 0)
 		spawn_nightmare()
 

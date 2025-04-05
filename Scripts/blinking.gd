@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var parent : Node2D = $"../../../.."
-@onready var sprite : Sprite2D = $"../Sprite2D"
+@onready var sprite : AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var area : Damaging = $".."
 @onready var anim : AnimationPlayer = $"../../../../AnimationPlayer"
 

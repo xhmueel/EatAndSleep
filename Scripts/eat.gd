@@ -4,8 +4,8 @@ const SPEED = 280.0
 const ACCEL = 2500.0
 const JUMP_VELOCITY = -500.0
 const FRICTION = 3000.0
-const COYOTE_TIME = 1.0
-const JUMP_BUFFER_TIME = 1.0
+const COYOTE_TIME = 0.2
+const JUMP_BUFFER_TIME = 0.2
 const JUMP_COOLDOWN = COYOTE_TIME
 
 const EAT_STARTUP = 0.5
@@ -15,7 +15,7 @@ const SPIT_SPEED_Y = -350.0
 const SPIT_OFFSET_X = 50.0
 const SPIT_OFFSET_Y = -80.0
 
-const PRIORITY_ANIMS = ["land", "eat", "spit"]
+const PRIORITY_ANIMS = ["land", "eat", "spit", "land_full"]
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -36,6 +36,8 @@ var last_jumped_time = JUMP_COOLDOWN + 1
 
 var facing = 1
 
+var append_full = ""
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	eat_area_shape = get_node("EatArea/CollisionShape2D")
@@ -44,7 +46,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if is_on_floor() and not was_grounded:
-		animated_sprite.play("land")
+		animated_sprite.play("land"+append_full)
 		
 	# Eat
 	if Input.is_action_just_pressed("eat_action") and not is_eating:
@@ -56,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		# Spit sleepy
 		elif sleepy_eaten:
 			animated_sprite.play("spit")
+			append_full = ""
 			sleepy_ref.process_mode = Node.PROCESS_MODE_INHERIT
 			sleepy_eaten = false
 			sleepy_ref.position = self.position
@@ -68,6 +71,7 @@ func _physics_process(delta: float) -> void:
 	if eat_time > EAT_STARTUP and is_eating:
 		is_eating = false
 		if sleepy_available and sleepy_ref and sleepy_ref.is_sleeping:
+			append_full = "_full"
 			sleepy_ref.process_mode = Node.PROCESS_MODE_DISABLED
 			sleepy_eaten = true
 			sleepy_ref.visible = false
@@ -81,14 +85,14 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = false if direction > 0 else 1
 		if (is_on_floor() and 
 		(animated_sprite.animation not in PRIORITY_ANIMS or not animated_sprite.is_playing())):
-			animated_sprite.play("walk")
+			animated_sprite.play("walk"+append_full)
 	else:
 		if not is_on_floor():
 			velocity.x = move_toward(velocity.x, direction, FRICTION * delta)
 		else:		
 			velocity.x = move_toward(velocity.x, direction, FRICTION * delta)
 			if animated_sprite.animation not in PRIORITY_ANIMS or not animated_sprite.is_playing():
-				animated_sprite.play("idle")
+				animated_sprite.play("idle"+append_full)
 	
 	if facing != previous_facing:
 		eat_area_shape.position.x *= -1
@@ -100,7 +104,7 @@ func _physics_process(delta: float) -> void:
 	if (last_jumped_time > JUMP_COOLDOWN
 	and last_jump_input_time < JUMP_BUFFER_TIME
 	and last_ground_time < COYOTE_TIME):
-		animated_sprite.play("jump")
+		animated_sprite.play("jump"+append_full)
 		velocity.y = JUMP_VELOCITY
 		last_jumped_time = 0.0
 		last_jump_input_time = JUMP_BUFFER_TIME + 1
@@ -108,8 +112,8 @@ func _physics_process(delta: float) -> void:
 		
 	# Gravity
 	if not is_on_floor():
-		if velocity.y > 0 and animated_sprite.animation != "fall":
-			animated_sprite.play("fall")
+		if velocity.y > 0 and animated_sprite.animation != "fall"+append_full:
+			animated_sprite.play("fall"+append_full)
 		velocity.y += gravity * delta
 	
 	last_ground_time += delta
