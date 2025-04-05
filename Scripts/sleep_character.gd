@@ -38,8 +38,8 @@ func _physics_process(delta: float) -> void:
 func process_sleeping(delta : float) -> void:
 	if Input.is_action_just_pressed("sleep_toggle"):
 		animated_sprite.position.y -= SLEEP_OFFSET_Y
-		collision_shape.position.y -= SLEEP_OFFSET_Y - 3
-		collision_shape.scale.y += 2
+		collision_shape.position.y -= SLEEP_OFFSET_Y
+		collision_shape.scale.y += 0.4
 		is_sleeping = false
 		
 	if not animated_sprite.is_playing():
@@ -111,8 +111,8 @@ func process_awake(delta : float) -> void:
 		is_sleeping = true
 		animated_sprite.play("falling_asleep")
 		animated_sprite.position.y += SLEEP_OFFSET_Y
-		collision_shape.position.y += SLEEP_OFFSET_Y + 3
-		collision_shape.scale.y -= 2
+		collision_shape.position.y += SLEEP_OFFSET_Y
+		collision_shape.scale.y -= 0.4
 		velocity = Vector2(0, 0)
 		spawn_nightmare()
 
