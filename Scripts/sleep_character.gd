@@ -1,6 +1,6 @@
 class_name Sleepy extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 500.0
 const JUMP_VELOCITY = -400.0
 const FRICTION = 10.0
 
@@ -38,7 +38,23 @@ func process_awake(delta : float) -> void:
 		is_sleeping = true
 		velocity = Vector2(0, 0)
 		spawn_nightmare()
-	
+
+	var velocity_y = velocity.y
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("sleep_left", "sleep_right")
+	var temp_v = Vector2(direction, 0)
+	if direction:
+		velocity = velocity.lerp(temp_v * SPEED, delta*2)
+		#velocity.x = direction * SPEED
+	else:
+		if not is_on_floor():
+			velocity = velocity.lerp(temp_v * SPEED, delta*2)
+		else:
+			velocity = velocity.lerp(temp_v * SPEED, delta*6)
+			#velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	velocity.y = velocity_y
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -47,16 +63,8 @@ func process_awake(delta : float) -> void:
 	if Input.is_action_just_pressed("sleep_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("sleep_left", "sleep_right")
-	if direction:
-		velocity.x = direction * SPEED
-	elif is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
 func spawn_nightmare() -> void:
 	var nightmare_character = nightmare_character_scene.instantiate()
-	get_parent().add_child(nightmare_character)
-	(nightmare_character as Node2D).position = self.position
+	nightmare_character.global_position = self.global_position
+	get_tree().root.add_child(nightmare_character)
 	
