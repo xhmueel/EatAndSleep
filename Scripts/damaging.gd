@@ -4,9 +4,10 @@ extends Area2D
 @onready var anim : AnimationPlayer = $"../AnimationPlayer"
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Group"):
+	if body.is_in_group("Players"):
 		#TODO Take damage
-		body.Die()
+		print("Die")
+		#body.Die()
 
 func activate() -> void:
 	#In traps it is the contrary (activate is to make them disappear)
@@ -14,4 +15,4 @@ func activate() -> void:
 	
 func deactivate() -> void:
 	#In traps it is the contrary (deactivate is to make them appear)
-	anim.play("dissapear")
+	anim.play("disappear")

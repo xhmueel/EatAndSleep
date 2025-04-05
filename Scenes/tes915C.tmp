@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://gqkdh3h5knpp"]
+
+[ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="1_havew"]
+[ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="2_sdddv"]
+[ext_resource type="Script" path="res://Scripts/platform.gd" id="3_xi077"]
+[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="4_rireb"]
+[ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_1xwv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trd0p"]
+size = Vector2(663, 20)
+
+[sub_resource type="Curve2D" id="Curve2D_onw2o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0r14"]
+size = Vector2(125, 125)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_havew")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(322, 189)
+shape = SubResource("RectangleShape2D_trd0p")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(665, 0)
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(322, 189)
+shape = SubResource("RectangleShape2D_trd0p")
+
+[node name="Eat" parent="." instance=ExtResource("2_sdddv")]
+
+[node name="Platform" type="Node2D" parent="."]
+position = Vector2(330, 155)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("3_xi077")
+speed = 300
+is_loop_path = true
+
+[node name="Path2D" type="Path2D" parent="Platform"]
+curve = SubResource("Curve2D_onw2o")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+rotation = 0.0192284
+rotates = false
+loop = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_a0r14")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("4_rireb")
+
+[node name="Button" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_1xwv5")]
+position = Vector2(198, 164)
+scale = Vector2(0.2, 0.2)
+platforms = [NodePath("../Platform")]

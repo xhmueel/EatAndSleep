@@ -2,13 +2,16 @@ extends Damaging
 
 @onready var parent : Node2D = $"../../.."
 @onready var path: PathFollow2D = $".."
+@onready var area : Area2D = $"."
 @onready var sprite: Sprite2D = $Sprite2D
 
+func _ready() -> void:
+	anim = $"../../../AnimationPlayer"
 
 func _process(delta: float) -> void:
 	if parent.is_moving:
 		path.progress += parent.speed * delta
-		sprite.rotation += parent.rotation_speed * delta
+		area.rotation += parent.rotation_speed * delta
 	
 		#if sprite.modulate.a < 0.1:
 		#	monitoring = false;

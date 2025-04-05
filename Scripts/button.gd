@@ -8,11 +8,13 @@ enum BUTTON_TYPE {PRESS, TOGGLE, TIMED, ONCE}
 
 var toggle_state : bool = false;
 
+var once_used = false;
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Group"):
+	if body.is_in_group("Players"):
 		match button_type:
-			BUTTON_TYPE.PRESS or BUTTON_TYPE.TIMED:
+			BUTTON_TYPE.PRESS, BUTTON_TYPE.TIMED:
 				activate_objects(true)
 			BUTTON_TYPE.TOGGLE:
 				if toggle_state:
@@ -22,11 +24,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				toggle_state = not toggle_state
 			BUTTON_TYPE.ONCE:
 				#Deactivate traps
-				activate_objects(true)
+				if not once_used:
+					activate_objects(true)
+					once_used = not once_used
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Group"):
+	if body.is_in_group("Players"):
 		match button_type:
 			BUTTON_TYPE.PRESS:
 				activate_objects(false)

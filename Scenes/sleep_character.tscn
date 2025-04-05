@@ -84,7 +84,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Sleepy" type="CharacterBody2D" groups=["Sleepy"]]
+[node name="Sleepy" type="CharacterBody2D" groups=["Players", "Sleepy"]]
 collision_mask = 12
 script = ExtResource("1_gu5lk")
 
