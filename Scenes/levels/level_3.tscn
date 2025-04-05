@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://1ressr4e3jpj"]
+[gd_scene load_steps=14 format=4 uid="uid://cikp86b0hnv3u"]
 
 [ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_dj4ne"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_0kvgk"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_fcmw2"]
+[ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="4_42otu"]
+[ext_resource type="Script" path="res://Scripts/platform.gd" id="5_f535t"]
+[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="6_fh3bq"]
+[ext_resource type="Script" path="res://Scripts/button.gd" id="7_rmucy"]
+[ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="8_yhnuf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
 texture = ExtResource("1_dj4ne")
@@ -20,6 +25,18 @@ physics_layer_1/collision_layer = 8
 physics_layer_1/collision_mask = 17
 sources/0 = SubResource("TileSetAtlasSource_4n316")
 
+[sub_resource type="Curve2D" id="Curve2D_2ikvw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -500, 0, 0, 0, 0, 1, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0r14"]
+size = Vector2(125, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5bpe"]
+size = Vector2(125, 122)
+
 [node name="Level3" type="Node2D"]
 
 [node name="Map" type="Node" parent="."]
@@ -29,7 +46,65 @@ tile_map_data = PackedByteArray("AAALABAAAAABAAAAAAATABAAAAABAAAAAAAUABAAAAABAAA
 tile_set = SubResource("TileSet_diton")
 
 [node name="Sleepy" parent="." instance=ExtResource("2_0kvgk")]
-position = Vector2(1257, 1002)
+position = Vector2(1603, 1002)
 
 [node name="Eat" parent="." instance=ExtResource("3_fcmw2")]
-position = Vector2(1346, 1010)
+position = Vector2(1692, 1010)
+
+[node name="Button" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("4_42otu")]
+position = Vector2(113, 1002)
+scale = Vector2(0.3, 0.3)
+platforms = [NodePath("../Platform")]
+
+[node name="Platform" type="Node2D" parent="."]
+position = Vector2(994, 1042)
+script = ExtResource("5_f535t")
+speed = 200
+
+[node name="Path2D" type="Path2D" parent="Platform"]
+curve = SubResource("Curve2D_2ikvw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+position = Vector2(0, -500)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+scale = Vector2(3.3, 0.3)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_a0r14")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("6_fh3bq")
+
+[node name="Button2" type="Node2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D" node_paths=PackedStringArray("platforms")]
+position = Vector2(0.606049, -126.667)
+scale = Vector2(0.0909091, 1)
+script = ExtResource("7_rmucy")
+button_type = 1
+platforms = [NodePath("../../../..")]
+
+[node name="Area2D" type="Area2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2"]
+collision_layer = 64
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_d5bpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2"]
+texture = ExtResource("6_fh3bq")
+
+[node name="Exit" parent="." instance=ExtResource("8_yhnuf")]
+position = Vector2(1737, 143)
+level_to_load = "res://Scenes/levels/level_4.tscn"
+
+[connection signal="body_entered" from="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D" to="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D" to="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2" method="_on_area_2d_body_exited"]

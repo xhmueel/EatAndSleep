@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://n2604dv82jc5"]
+[gd_scene load_steps=11 format=4 uid="uid://n2604dv82jc5"]
 
 [ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_7qpsa"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_yptaq"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_uydrd"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="4_rcfs3"]
+[ext_resource type="Script" path="res://Scripts/platform.gd" id="5_v4nkb"]
+[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="6_gjn6t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
 texture = ExtResource("1_7qpsa")
@@ -21,6 +23,15 @@ physics_layer_1/collision_layer = 8
 physics_layer_1/collision_mask = 17
 sources/0 = SubResource("TileSetAtlasSource_4n316")
 
+[sub_resource type="Curve2D" id="Curve2D_yu8ox"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -950, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0r14"]
+size = Vector2(125, 125)
+
 [node name="Level1" type="Node2D"]
 
 [node name="Map" type="Node" parent="."]
@@ -36,5 +47,35 @@ position = Vector2(898, 1006)
 position = Vector2(978, 1010)
 
 [node name="Exit" parent="." instance=ExtResource("4_rcfs3")]
-position = Vector2(1575, 905)
+position = Vector2(960, 140)
 level_to_load = "res://Scenes/levels/level_2.tscn"
+
+[node name="Platform" type="Node2D" parent="."]
+position = Vector2(961, 791)
+scale = Vector2(1.8, 0.3)
+script = ExtResource("5_v4nkb")
+speed = 300
+is_loop_path = true
+is_start_moving = true
+
+[node name="Path2D" type="Path2D" parent="Platform"]
+curve = SubResource("Curve2D_yu8ox")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+scale = Vector2(1, 1)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_a0r14")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("6_gjn6t")
