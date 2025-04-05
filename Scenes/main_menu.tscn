@@ -36,7 +36,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Start"
 script = ExtResource("1_g63wb")
-level_to_load = "res://Scenes/test_map_scene.tscn"
+level_to_load = "res://Scenes/levels/level_1.tscn"
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
