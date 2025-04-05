@@ -1,33 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://b31hu3qyjrgct"]
+[gd_scene load_steps=7 format=3 uid="uid://b31hu3qyjrgct"]
 
-[ext_resource type="Script" path="res://Scripts/fireball.gd" id="1_ugvuq"]
+[ext_resource type="Script" path="res://Scripts/firebal.gd" id="1_bnk5e"]
+[ext_resource type="Script" path="res://Scripts/fireballBehavior.gd" id="1_ugvuq"]
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="2_vxcxv"]
+[ext_resource type="Script" path="res://Scripts/blinking.gd" id="3_dkncv"]
+
+[sub_resource type="Curve2D" id="Curve2D_ru63d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, 1, 0, 0, 0, 0, 503, -3, 0, 0, 0, 0, 248, 227, 0, 0, 0, 0, -1, 1)
+}
+point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hxcr"]
 size = Vector2(126, 125)
 
-[sub_resource type="Curve2D" id="Curve2D_ru63d"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -298, -3, 0, 0, 0, 0, 177, -230, 0, 0, 0, 0, 366, 2, 0, 0, 0, 0, 97, 197, 0, 0, 0, 0, -298, 0)
-}
-point_count = 5
-
-[node name="Fireball" type="Area2D"]
-script = ExtResource("1_ugvuq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_1hxcr")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vxcxv")
+[node name="Fireball" type="Node2D"]
+script = ExtResource("1_bnk5e")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ru63d")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-298, -3)
-rotation = -0.445808
+position = Vector2(-1, 1)
+rotation = 0.013824
+rotates = false
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="Area" type="Area2D" parent="Path2D/PathFollow2D"]
+rotation = 0.445808
+script = ExtResource("1_ugvuq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1hxcr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Area"]
+texture = ExtResource("2_vxcxv")
+
+[node name="Blinking" type="Node2D" parent="Path2D/PathFollow2D/Area"]
+script = ExtResource("3_dkncv")
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Area" to="Path2D/PathFollow2D/Area" method="_on_body_entered"]
