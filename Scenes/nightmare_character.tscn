@@ -4,7 +4,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvflf"]
 
-[node name="Nightmare" type="CharacterBody2D" groups=["Players"]]
+[node name="Nightmare" type="CharacterBody2D" groups=["Nightmare", "Players"]]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_5rfhl")
