@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://n2604dv82jc5"]
+[gd_scene load_steps=14 format=4 uid="uid://n2604dv82jc5"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_aco3t"]
+[ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_cmwr2"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_yptaq"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_uydrd"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="4_rcfs3"]
 [ext_resource type="Texture2D" uid="uid://c8iyg6ul8w5ii" path="res://Assets/backgrounds/background6.png" id="5_j84ai"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="5_v4nkb"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="7_d0op4"]
-[ext_resource type="PackedScene" path="res://Scenes/transition.tscn" id="7_owfi7"]
+[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="7_d0op4"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="7_owfi7"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="8_5dbl0"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="8_6wl8p"]
 
@@ -21,6 +22,7 @@ point_count = 3
 size = Vector2(126.5, 27)
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_cmwr2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0

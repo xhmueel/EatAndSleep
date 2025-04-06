@@ -4,8 +4,6 @@ extends TextureButton
 @export_file("*.tscn") var level_to_load
 @export var transition_player : AnimatedSprite2D
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
