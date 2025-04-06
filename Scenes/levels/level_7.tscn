@@ -249,9 +249,10 @@ position = Vector2(88, 1011)
 [node name="Eat" parent="." instance=ExtResource("3_1cra8")]
 position = Vector2(206, 1011)
 
-[node name="Exit" parent="." instance=ExtResource("4_pknlv")]
+[node name="Exit" parent="." node_paths=PackedStringArray("transition_player") instance=ExtResource("4_pknlv")]
 position = Vector2(1576, 98)
 level_to_load = "res://Scenes/main_menu.tscn"
+transition_player = NodePath("../CanvasLayer/AnimatedSprite2D")
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(957, 78)

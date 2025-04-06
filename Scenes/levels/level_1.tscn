@@ -68,7 +68,6 @@ grow_vertical = 2
 texture = ExtResource("5_j84ai")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
