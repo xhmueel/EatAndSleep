@@ -15,9 +15,9 @@
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="13_xrhwf"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_xh22w"]
 [ext_resource type="Texture2D" uid="uid://c5mdnm8najl2" path="res://Assets/backgrounds/background7.png" id="15_2f42p"]
-[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="16_k5de1"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="16_k5de1"]
 [ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="16_w4p06"]
-[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="17_vudyb"]
+[ext_resource type="PackedScene" path="res://Scenes/transition.tscn" id="17_vudyb"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="18_xqmlo"]
 
 [sub_resource type="Curve2D" id="Curve2D_dbv03"]

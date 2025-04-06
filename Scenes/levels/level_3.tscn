@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="8_yhnuf"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="9_cfxp7"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="9_mtt4c"]
-[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="10_f58y0"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="10_f58y0"]
 [ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="10_i2kwv"]
-[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="12_d2mfm"]
+[ext_resource type="PackedScene" path="res://Scenes/transition.tscn" id="12_d2mfm"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="13_bqu2i"]
 
 [sub_resource type="Curve2D" id="Curve2D_2ikvw"]

@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_4utd7"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_2xpam"]
 [ext_resource type="Texture2D" uid="uid://c8iyg6ul8w5ii" path="res://Assets/backgrounds/background6.png" id="16_op0gq"]
-[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="17_bpjc8"]
-[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="18_c1eei"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="17_bpjc8"]
+[ext_resource type="PackedScene" path="res://Scenes/transition.tscn" id="18_c1eei"]
 [ext_resource type="Script" path="res://Scripts/transition.gd" id="19_lxb56"]
 
 [sub_resource type="Curve2D" id="Curve2D_kmcl7"]
