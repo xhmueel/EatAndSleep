@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bs8vjgp70nnqg"]
+[gd_scene load_steps=37 format=3 uid="uid://bs8vjgp70nnqg"]
 
 [ext_resource type="Script" path="res://Scripts/sleep_character.gd" id="1_gu5lk"]
 [ext_resource type="Texture2D" uid="uid://d2u7n42sdlplu" path="res://Assets/sleep_walk.png" id="2_ati1r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b27d8regs48ia" path="res://Assets/sleep_sleeping.png" id="5_d4wqn"]
 [ext_resource type="AudioStream" uid="uid://brngsoat3h8d3" path="res://Audio/yawn.mp3" id="6_4ifo3"]
 [ext_resource type="AudioStream" uid="uid://csybjvoo68h5t" path="res://Audio/ahn.mp3" id="7_0wujm"]
+[ext_resource type="AudioStream" uid="uid://bcblopu1v0uc8" path="res://Audio/pop.mp3" id="8_yugqt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhm1u"]
 radius = 26.0
@@ -250,6 +251,11 @@ autoplay = "idle"
 
 [node name="SleepAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_4ifo3")
+volume_db = -20.0
 
 [node name="WakeAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_0wujm")
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_yugqt")
+volume_db = -15.0

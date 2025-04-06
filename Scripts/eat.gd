@@ -106,6 +106,7 @@ func _physics_process(delta: float) -> void:
 	if (last_jumped_time > JUMP_COOLDOWN
 	and last_jump_input_time < JUMP_BUFFER_TIME
 	and last_ground_time < COYOTE_TIME):
+		$JumpAudio.play()
 		animated_sprite.play("jump"+append_full)
 		velocity.y = JUMP_VELOCITY
 		last_jumped_time = 0.0

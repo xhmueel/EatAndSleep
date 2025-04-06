@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_4utd7"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_2xpam"]
 [ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_efoni"]
-[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="17_bpjc8"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="17_bpjc8"]
 
 [sub_resource type="Curve2D" id="Curve2D_kmcl7"]
 _data = {

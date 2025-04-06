@@ -87,6 +87,7 @@ func process_awake(delta : float) -> void:
 	and last_jump_input_time < JUMP_BUFFER_TIME
 	and last_ground_time < COYOTE_TIME):
 		animated_sprite.play("jump")
+		$JumpAudio.play()
 		velocity.y = JUMP_VELOCITY
 		last_jumped_time = 0.0
 		last_jump_input_time = JUMP_BUFFER_TIME + 1

@@ -3,6 +3,8 @@ extends Area2D
 
 @export_file("*.tscn") var level_to_reload
 
+@onready var death_sfx = preload("res://Audio/death.mp3")
+
 @onready var anim : AnimationPlayer = $AnimationPlayer
 
 func _on_body_entered(body: Node2D) -> void:
@@ -20,4 +22,5 @@ func deactivate() -> void:
 
 func reload_level():
 	print("loading level : ", level_to_reload)
+	AudioManager.play_fx(death_sfx, 0.8)
 	get_tree().change_scene_to_file(level_to_reload)

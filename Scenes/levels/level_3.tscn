@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="9_cfxp7"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="9_mtt4c"]
 [ext_resource type="Texture2D" uid="uid://hklwkfh3onbx" path="res://Assets/backgrounds/background2.png" id="10_a1ba8"]
-[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="10_f58y0"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="10_f58y0"]
 
 [sub_resource type="Curve2D" id="Curve2D_2ikvw"]
 _data = {

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_lyxql"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="8_eyrjm"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="9_52gnj"]
-[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="9_v1s7l"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="9_v1s7l"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="10_djcfo"]
 [ext_resource type="Texture2D" uid="uid://c38jowi0cgxr" path="res://Assets/backgrounds/background4.png" id="10_hv025"]
 [ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="12_xsb7b"]
