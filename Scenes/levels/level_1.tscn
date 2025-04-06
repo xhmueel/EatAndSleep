@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://n2604dv82jc5"]
+[gd_scene load_steps=14 format=4 uid="uid://n2604dv82jc5"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_aco3t"]
+[ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_xdsbe"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_yptaq"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_uydrd"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="4_rcfs3"]
@@ -21,6 +22,7 @@ point_count = 3
 size = Vector2(126.5, 27)
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_xdsbe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
@@ -66,6 +68,7 @@ grow_vertical = 2
 texture = ExtResource("5_j84ai")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
