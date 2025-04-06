@@ -25,6 +25,12 @@ size = Vector2(436, 770.5)
 
 [node name="Level2" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
 [node name="Map" type="Node" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Map"]

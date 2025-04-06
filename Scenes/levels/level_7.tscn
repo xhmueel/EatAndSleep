@@ -1,24 +1,24 @@
-[gd_scene load_steps=29 format=4 uid="uid://v536v8xajlp"]
+[gd_scene load_steps=29 format=4 uid="uid://ej5ukvcggv70"]
 
-[ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_4brl5"]
-[ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_stv1q"]
-[ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_y2cku"]
-[ext_resource type="Script" path="res://Scripts/platform.gd" id="4_4rbkk"]
-[ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_ayy6p"]
-[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_robkb"]
-[ext_resource type="Texture2D" uid="uid://ce8u6c0xyfusf" path="res://Assets/buttons/press_button_blue.png" id="6_oelhx"]
-[ext_resource type="Texture2D" uid="uid://btx6jxey0181n" path="res://Assets/buttons/press_button_darkblue.png" id="7_o0l0m"]
-[ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_tfjpn"]
-[ext_resource type="Texture2D" uid="uid://cgfdfeqsbvk4r" path="res://Assets/buttons/press_button_gold.png" id="8_no4ul"]
-[ext_resource type="Texture2D" uid="uid://h886my33jsq2" path="res://Assets/buttons/press_button_green.png" id="9_3b4on"]
-[ext_resource type="Texture2D" uid="uid://c4hpksyoe40qo" path="res://Assets/buttons/press_button_pink.png" id="10_inm2r"]
-[ext_resource type="Texture2D" uid="uid://dtgj3sjn42vmk" path="res://Assets/buttons/press_button_purple.png" id="11_6liaf"]
-[ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_4utd7"]
-[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_2xpam"]
-[ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_efoni"]
+[ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_ocwww"]
+[ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_6nx1b"]
+[ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_1cra8"]
+[ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="4_pknlv"]
+[ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_x8m42"]
+[ext_resource type="Texture2D" uid="uid://ce8u6c0xyfusf" path="res://Assets/buttons/press_button_blue.png" id="6_4spx1"]
+[ext_resource type="Texture2D" uid="uid://btx6jxey0181n" path="res://Assets/buttons/press_button_darkblue.png" id="7_xvjrq"]
+[ext_resource type="Texture2D" uid="uid://cgfdfeqsbvk4r" path="res://Assets/buttons/press_button_gold.png" id="8_51n8m"]
+[ext_resource type="Texture2D" uid="uid://h886my33jsq2" path="res://Assets/buttons/press_button_green.png" id="9_ppgib"]
+[ext_resource type="Texture2D" uid="uid://c4hpksyoe40qo" path="res://Assets/buttons/press_button_pink.png" id="10_uvje6"]
+[ext_resource type="Texture2D" uid="uid://dtgj3sjn42vmk" path="res://Assets/buttons/press_button_purple.png" id="11_aqcxk"]
+[ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_qpojj"]
+[ext_resource type="Script" path="res://Scripts/platform.gd" id="13_xrhwf"]
+[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_xh22w"]
+[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="15_65gl8"]
+[ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_selwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
-texture = ExtResource("1_4brl5")
+texture = ExtResource("1_ocwww")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -87,7 +87,7 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
 size = Vector2(125, 125)
 
-[node name="Level6" type="Node2D"]
+[node name="Level7" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
@@ -101,63 +101,63 @@ limit_bottom = 1080
 tile_map_data = PackedByteArray("AAALABAAAAABAAAAAAATABAAAAABAAAAAAAUABAAAAABAAAAAAAVABAAAAABAAAAAAAWABAAAAABAAAAAAAXABAAAAABAAAAAAAYABAAAAABAAAAAAAZABAAAAABAAAAAAAaABAAAAABAAAAAAAbABAAAAABAAAAAAAcABAAAAABAAAAAAAdABAAAAABAAAAAAAAABAAAAABAAAAAAABABAAAAABAAAAAAACABAAAAABAAAAAAADABAAAAABAAAAAAAEABAAAAABAAAAAAAFABAAAAABAAAAAAAGABAAAAABAAAAAAAHABAAAAABAAAAAAAIABAAAAABAAAAAAAJABAAAAABAAAAAAAKABAAAAABAAAAAAAMABAAAAABAAAAAAARABAAAAABAAAAAAASABAAAAABAAAAAAD/////AAABAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAD//wUAAAABAAAAAAD//wYAAAABAAAAAAD//wcAAAABAAAAAAD//wgAAAABAAAAAAD//wkAAAABAAAAAAD//woAAAABAAAAAAD//wsAAAABAAAAAAD//wwAAAABAAAAAAD//w0AAAABAAAAAAD//w4AAAABAAAAAAD//w8AAAABAAAAAAD//xAAAAABAAAAAAAeAP//AAABAAAAAAAeAAAAAAABAAAAAAAeAAEAAAABAAAAAAAeAAIAAAABAAAAAAAeAAMAAAABAAAAAAAeAAQAAAABAAAAAAAeAAUAAAABAAAAAAAeAAYAAAABAAAAAAAeAAcAAAABAAAAAAAeAAgAAAABAAAAAAAeAAkAAAABAAAAAAAeAAoAAAABAAAAAAAeAAsAAAABAAAAAAAeAAwAAAABAAAAAAAeAA0AAAABAAAAAAAeAA4AAAABAAAAAAAeAA8AAAABAAAAAAAeABAAAAABAAAAAAAHAAMAAAABAAAAAAALAAMAAAABAAAAAAAMAAMAAAABAAAAAAANAAMAAAABAAAAAAARAAMAAAABAAAAAAASAAMAAAABAAAAAAATAAMAAAABAAAAAAAUAAMAAAABAAAAAAAVAAMAAAABAAAAAAAWAAMAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAQAAQAAAABAAAAAAAQAAMAAAABAAAAAAANAAQAAAABAAAAAAAIAAMAAAABAAAAAAAJAAMAAAABAAAAAAAKAAMAAAABAAAAAAAXAAMAAAABAAAAAAAYAAMAAAABAAAAAAAYAAQAAAABAAAAAAAXAAQAAAABAAAAAAAWAAQAAAABAAAAAAAVAAQAAAABAAAAAAAUAAQAAAABAAAAAAATAAQAAAABAAAAAAASAAQAAAABAAAAAAARAAQAAAABAAAAAAAMAAQAAAABAAAAAAALAAQAAAABAAAAAAAKAAQAAAABAAAAAAAJAAQAAAABAAAAAAAIAAQAAAABAAAAAAAHAAQAAAABAAAAAAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAAQABAAAAABAAAAAAAPABAAAAABAAAAAAAOABAAAAABAAAAAAANABAAAAABAAAAAAAPAA8AAAABAAAAAAAOAA8AAAABAAAAAAAOAA4AAAABAAAAAAAPAA4AAAABAAAAAAAPAA0AAAABAAAAAAAPAAwAAAABAAAAAAAPAAsAAAABAAAAAAAPAAoAAAABAAAAAAAOAAoAAAABAAAAAAAOAAkAAAABAAAAAAAOAAgAAAABAAAAAAAOAAcAAAABAAAAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAPAAUAAAABAAAAAAAPAAQAAAABAAAAAAAPAAMAAAABAAAAAAAOAAMAAAABAAAAAAAOAAQAAAABAAAAAAAOAAUAAAABAAAAAAAPAAgAAAABAAAAAAAPAAcAAAABAAAAAAAPAAkAAAABAAAAAAAOAAsAAAABAAAAAAAOAAwAAAABAAAAAAAOAA0AAAABAAAAAAA=")
 tile_set = SubResource("TileSet_diton")
 
-[node name="Sleepy" parent="." instance=ExtResource("2_stv1q")]
+[node name="Sleepy" parent="." instance=ExtResource("2_6nx1b")]
 position = Vector2(59, 1013)
 
-[node name="Eat" parent="." instance=ExtResource("3_y2cku")]
+[node name="Eat" parent="." instance=ExtResource("3_1cra8")]
 position = Vector2(1862, 1013)
 
-[node name="Exit" parent="." instance=ExtResource("7_tfjpn")]
+[node name="Exit" parent="." instance=ExtResource("4_pknlv")]
 position = Vector2(957, 98)
 level_to_load = "res://Scenes/main_menu.tscn"
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(957, 78)
 
-[node name="Button" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(-810, 930)
 platforms = [NodePath("../../Platforms/Platform")]
 
-[node name="Button2" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button2" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(-646, 930)
 platforms = [NodePath("../../Platforms/Platform2")]
-texture = ExtResource("6_oelhx")
+texture = ExtResource("6_4spx1")
 
-[node name="Button3" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button3" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(-394, 930)
 platforms = [NodePath("../../Platforms/Platform3")]
-texture = ExtResource("7_o0l0m")
+texture = ExtResource("7_xvjrq")
 
-[node name="Button4" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button4" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(-211, 930)
 platforms = [NodePath("../../Platforms/Platform4")]
-texture = ExtResource("8_no4ul")
+texture = ExtResource("8_51n8m")
 
-[node name="Button5" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button5" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(203, 930)
 platforms = [NodePath("../../Platforms/Platform5")]
-texture = ExtResource("9_3b4on")
+texture = ExtResource("9_ppgib")
 
-[node name="Button6" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button6" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(367, 930)
 platforms = [NodePath("../../Platforms/Platform6")]
-texture = ExtResource("10_inm2r")
+texture = ExtResource("10_uvje6")
 
-[node name="Button7" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button7" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(627, 930)
 platforms = [NodePath("../../Platforms/Platform7")]
-texture = ExtResource("11_6liaf")
+texture = ExtResource("11_aqcxk")
 
-[node name="Button8" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
+[node name="Button8" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
 position = Vector2(810, 930)
 platforms = [NodePath("../../Platforms/Platform8")]
-texture = ExtResource("12_4utd7")
+texture = ExtResource("12_qpojj")
 
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Platform" type="Node2D" parent="Platforms"]
 position = Vector2(1208, 725)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform"]
 curve = SubResource("Curve2D_kmcl7")
@@ -182,11 +182,11 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0, 0, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="Platform2" type="Node2D" parent="Platforms"]
 position = Vector2(1744, 141)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform2"]
 curve = SubResource("Curve2D_nm1i6")
@@ -212,11 +212,11 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.23, 1, 0.9615, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="Platform3" type="Node2D" parent="Platforms"]
 position = Vector2(1467, 958)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform3"]
 curve = SubResource("Curve2D_vvj81")
@@ -241,11 +241,11 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0, 0.5, 1, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="Platform4" type="Node2D" parent="Platforms"]
 position = Vector2(1609, 779)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform4"]
 curve = SubResource("Curve2D_dly6b")
@@ -270,11 +270,11 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform4/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0.683333, 0, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="Platform5" type="Node2D" parent="Platforms"]
 position = Vector2(271, 824)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform5"]
 curve = SubResource("Curve2D_xjr75")
@@ -300,11 +300,11 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform5/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.417, 1, 0.34, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="Platform6" type="Node2D" parent="Platforms"]
 position = Vector2(69, 690)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform6"]
 curve = SubResource("Curve2D_o7xh3")
@@ -330,11 +330,11 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform6/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.966, 0.32, 1, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="Platform7" type="Node2D" parent="Platforms"]
 position = Vector2(447, 951)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform7"]
 curve = SubResource("Curve2D_tldrc")
@@ -360,11 +360,11 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform7/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.4, 0, 1, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="Platform8" type="Node2D" parent="Platforms"]
 position = Vector2(666, 654)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform8"]
 curve = SubResource("Curve2D_ug1jt")
@@ -389,12 +389,12 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform8/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0.983333, 0, 1)
-texture = ExtResource("14_2xpam")
+texture = ExtResource("14_xh22w")
 
 [node name="PlatformA" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(3505, 770)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformA"]
 curve = SubResource("Curve2D_kmcl7")
@@ -416,12 +416,12 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformA/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="PlatformB" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(4041, 186)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformB"]
 curve = SubResource("Curve2D_nm1i6")
@@ -444,12 +444,12 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformB/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="PlatformC" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(3764, 1003)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformC"]
 curve = SubResource("Curve2D_vvj81")
@@ -471,12 +471,12 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformC/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="PlatformD" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(3906, 824)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformD"]
 curve = SubResource("Curve2D_dly6b")
@@ -498,12 +498,12 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformD/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="PlatformE" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(2568, 869)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformE"]
 curve = SubResource("Curve2D_xjr75")
@@ -526,12 +526,12 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformE/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="PlatformF" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(2366, 735)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformF"]
 curve = SubResource("Curve2D_o7xh3")
@@ -554,12 +554,12 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformF/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="PlatformG" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(2744, 996)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformG"]
 curve = SubResource("Curve2D_tldrc")
@@ -582,12 +582,12 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformG/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="PlatformH" type="Node2D" parent="Platforms"]
 visible = false
 position = Vector2(2963, 699)
-script = ExtResource("4_4rbkk")
+script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/PlatformH"]
 curve = SubResource("Curve2D_ug1jt")
@@ -609,7 +609,7 @@ collision_mask = 19
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformH/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("5_robkb")
+texture = ExtResource("15_65gl8")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -629,4 +629,4 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("16_efoni")
+texture = ExtResource("16_selwl")

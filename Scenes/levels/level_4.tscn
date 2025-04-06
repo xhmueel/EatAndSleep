@@ -45,6 +45,12 @@ point_count = 2
 
 [node name="Level4" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
 [node name="FlyingArea" type="Area2D" parent="."]
 position = Vector2(1225, 373)
 collision_layer = 8
