@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2l1hmosgcutw"]
+
+[ext_resource type="Texture2D" uid="uid://d28khlvdd7hcb" path="res://Assets/transition/11.png" id="1_2wri7"]
+[ext_resource type="Texture2D" uid="uid://doo7no8362wah" path="res://Assets/transition/10.png" id="2_6ivgk"]
+[ext_resource type="Texture2D" uid="uid://c7s4e25w53jdv" path="res://Assets/transition/9.png" id="3_6nwmf"]
+[ext_resource type="Texture2D" uid="uid://bmm77w6qmsgb2" path="res://Assets/transition/8.png" id="4_h6nl2"]
+[ext_resource type="Texture2D" uid="uid://cqs77do1065ae" path="res://Assets/transition/7.png" id="5_1rfaq"]
+[ext_resource type="Texture2D" uid="uid://cs1uvr3hbyy5x" path="res://Assets/transition/6.png" id="6_pp86m"]
+[ext_resource type="Texture2D" uid="uid://dpmo0b3ep6n4b" path="res://Assets/transition/5.png" id="7_by0x2"]
+[ext_resource type="Texture2D" uid="uid://bip8dqjplrx5l" path="res://Assets/transition/4.png" id="8_cykbt"]
+[ext_resource type="Texture2D" uid="uid://ggj0qcu32vf2" path="res://Assets/transition/3.png" id="9_ut13b"]
+[ext_resource type="Texture2D" uid="uid://3lk1u66ocgyu" path="res://Assets/transition/2.png" id="10_ouri8"]
+[ext_resource type="Texture2D" uid="uid://38l1om4k5mq" path="res://Assets/transition/1.png" id="11_qw4d6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y65bc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2wri7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6ivgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6nwmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h6nl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1rfaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pp86m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_by0x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cykbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ut13b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ouri8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qw4d6")
+}],
+"loop": false,
+"name": &"fade_in",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qw4d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ouri8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ut13b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cykbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_by0x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pp86m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1rfaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h6nl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6nwmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6ivgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_2wri7")
+}],
+"loop": false,
+"name": &"fade_out",
+"speed": 12.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+z_index = 2
+position = Vector2(966, 513)
+sprite_frames = SubResource("SpriteFrames_y65bc")
+animation = &"fade_in"
+autoplay = "fade_in"

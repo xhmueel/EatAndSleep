@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://fa3r1rrqb2xg"]
+[gd_scene load_steps=12 format=4 uid="uid://fa3r1rrqb2xg"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_hf100"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_uj3ou"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="6_jw28c"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_40hwj"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="8_8sw2e"]
+[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="8_fcpq8"]
 
 [sub_resource type="Curve2D" id="Curve2D_7sehn"]
 _data = {
@@ -43,7 +44,7 @@ rotation = -1.5708
 platforms = [NodePath("../Platform")]
 
 [node name="Exit" parent="." instance=ExtResource("7_40hwj")]
-position = Vector2(1779, 91)
+position = Vector2(1779, 98)
 level_to_load = "res://Scenes/levels/level_3.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -125,6 +126,9 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center]As Sleepy press \"Shift\" to Sleep. Shadow can enter and float in dark areas[center]"
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_fcpq8")]
+level_to_load = "res://Scenes/levels/level_2.tscn"
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1

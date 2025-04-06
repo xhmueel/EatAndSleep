@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 @export_file("*.tscn") var level_to_load
 

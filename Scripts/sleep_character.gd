@@ -119,5 +119,5 @@ func process_awake(delta : float) -> void:
 func spawn_nightmare() -> void:
 	var nightmare_character = nightmare_character_scene.instantiate()
 	nightmare_character.global_position = self.global_position
-	get_tree().root.add_child(nightmare_character)
+	self.get_parent().add_child(nightmare_character)
 	

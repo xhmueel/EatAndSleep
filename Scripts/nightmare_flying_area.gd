@@ -13,7 +13,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if shadow:
 		body.can_fly = true
 
-
 func _on_body_exited(body: Node2D) -> void:
 	var shadow : Shadow = body as Shadow
 	if shadow:

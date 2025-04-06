@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnsrk1ec8yl7d"]
+[gd_scene load_steps=8 format=3 uid="uid://cnsrk1ec8yl7d"]
 
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="1_g63wb"]
 [ext_resource type="Script" path="res://Scripts/exit_button.gd" id="2_3jman"]
+[ext_resource type="Texture2D" uid="uid://cnpou211m37m7" path="res://Assets/main_menu_image.png" id="3_bkk6j"]
+[ext_resource type="Texture2D" uid="uid://bgpi5dd4bmqnu" path="res://Assets/start_purple.png" id="4_qw1xv"]
+[ext_resource type="Texture2D" uid="uid://ddfpmvnkgoh4b" path="res://Assets/quit_black.png" id="5_b2ccc"]
+[ext_resource type="Texture2D" uid="uid://wi2upkfrvygo" path="res://Assets/start_black.png" id="5_o1ltd"]
+[ext_resource type="Texture2D" uid="uid://b66owgmjyurj2" path="res://Assets/quit_purple.png" id="7_2vcwr"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,45 +16,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_bkk6j")
+
+[node name="Start" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -580.0
-offset_right = 200.0
-offset_bottom = -237.0
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -217.0
+offset_right = 62.0001
+offset_bottom = 51.0
 grow_horizontal = 2
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="Start" type="Button" parent="VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(400, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Start"
+grow_vertical = 2
+rotation = 0.0174533
+texture_normal = ExtResource("4_qw1xv")
+texture_hover = ExtResource("5_o1ltd")
 script = ExtResource("1_g63wb")
 level_to_load = "res://Scenes/levels/level_1.tscn"
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Exit" type="Button" parent="VBoxContainer/MarginContainer3"]
-custom_minimum_size = Vector2(400, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Exit
-"
+[node name="Exit" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -15.0
+offset_right = 334.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_b2ccc")
+texture_hover = ExtResource("7_2vcwr")
 script = ExtResource("2_3jman")
 
-[connection signal="pressed" from="VBoxContainer/MarginContainer/Start" to="VBoxContainer/MarginContainer/Start" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/MarginContainer3/Exit" to="VBoxContainer/MarginContainer3/Exit" method="_on_pressed"]
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]
+[connection signal="pressed" from="Exit" to="Exit" method="_on_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cvuqgvfmacbpx"]
+[gd_scene load_steps=15 format=4 uid="uid://cvuqgvfmacbpx"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_gasat"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_0kvgk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="9_cfxp7"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="9_mtt4c"]
 [ext_resource type="Texture2D" uid="uid://hklwkfh3onbx" path="res://Assets/backgrounds/background2.png" id="10_a1ba8"]
+[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="10_f58y0"]
 
 [sub_resource type="Curve2D" id="Curve2D_2ikvw"]
 _data = {
@@ -71,7 +72,7 @@ shape = SubResource("RectangleShape2D_a0r14")
 texture = ExtResource("6_fh3bq")
 
 [node name="Exit" parent="." instance=ExtResource("8_yhnuf")]
-position = Vector2(1737, 143)
+position = Vector2(1735, 165)
 level_to_load = "res://Scenes/levels/level_4.tscn"
 
 [node name="Spikes" type="Node2D" parent="."]
@@ -158,3 +159,8 @@ offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_a1ba8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_f58y0")]
+level_to_load = "res://Scenes/levels/level_3.tscn"

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckn4ypjnjbr7r" path="res://Assets/exit_portal.png" id="2_blp0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbc2g"]
-size = Vector2(152, 218)
+size = Vector2(128, 188)
 
 [node name="Exit" type="Area2D"]
 collision_mask = 17
@@ -14,7 +14,7 @@ script = ExtResource("1_781ou")
 shape = SubResource("RectangleShape2D_bbc2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.849011, 0.849011)
+scale = Vector2(0.737123, 0.737123)
 texture = ExtResource("2_blp0w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

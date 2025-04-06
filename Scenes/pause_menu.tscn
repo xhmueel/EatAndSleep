@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://ego0rlmvv7as"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_lslqn"]
+[ext_resource type="Texture2D" uid="uid://cnpou211m37m7" path="res://Assets/main_menu_image.png" id="2_hfbpa"]
+[ext_resource type="Script" path="res://Scenes/restart_button.gd" id="3_o4w0k"]
+[ext_resource type="Script" path="res://Scenes/exit_button_button.gd" id="4_x6nka"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lslqn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_hfbpa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -112.0
+offset_right = 200.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -115.0
+offset_right = 152.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Restart" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+script = ExtResource("3_o4w0k")
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = 8.0
+offset_right = 311.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Exit" type="Button" parent="MarginContainer3"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit
+"
+script = ExtResource("4_x6nka")
+
+[connection signal="pressed" from="MarginContainer/Restart" to="MarginContainer/Restart" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer3/Exit" to="MarginContainer3/Exit" method="_on_pressed"]
