@@ -37,8 +37,8 @@ position = Vector2(1311, 484)
 position = Vector2(1400, 492)
 
 [node name="Button" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_843fj")]
-position = Vector2(1886, 418)
-scale = Vector2(0.55, 0.55)
+position = Vector2(1901, 418)
+rotation = -1.5708
 platforms = [NodePath("../Platform")]
 
 [node name="Exit" parent="." instance=ExtResource("7_40hwj")]
@@ -152,4 +152,5 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(1, 0, 0, 1)
 texture = ExtResource("8_38c0r")

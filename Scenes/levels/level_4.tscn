@@ -1,14 +1,13 @@
-[gd_scene load_steps=22 format=4 uid="uid://w6fytnvg8j4s"]
+[gd_scene load_steps=20 format=4 uid="uid://w6fytnvg8j4s"]
 
 [ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="1_gatq6"]
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_ve884"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_gmyh2"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_dy54v"]
-[ext_resource type="Script" path="res://Scripts/button.gd" id="4_nxyl1"]
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_yojd7"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="6_0ot5l"]
+[ext_resource type="Texture2D" uid="uid://ce8u6c0xyfusf" path="res://Assets/buttons/press_button_blue.png" id="6_xgd2a"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="7_4665n"]
-[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="8_3i64h"]
 [ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="8_v1tee"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="8_yvdqh"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="9_oatok"]
@@ -22,9 +21,6 @@ size = Vector2(190, 315)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvfaa"]
 size = Vector2(183, 61)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5bpe"]
-size = Vector2(125, 122)
-
 [sub_resource type="Curve2D" id="Curve2D_3bvfx"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 250)
@@ -33,9 +29,6 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elkfk"]
 size = Vector2(126.5, 27)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
-size = Vector2(125, 125)
 
 [sub_resource type="Curve2D" id="Curve2D_wlnkd"]
 _data = {
@@ -48,6 +41,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, -400, 0, 0, 0, 0, 0, 290)
 }
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
+size = Vector2(125, 125)
 
 [node name="Level4" type="Node2D"]
 
@@ -91,28 +87,14 @@ position = Vector2(1095, 1017)
 
 [node name="Buttons" type="Node2D" parent="."]
 
-[node name="Button" type="Node2D" parent="Buttons" node_paths=PackedStringArray("platforms")]
-z_index = 1
-position = Vector2(1513, 481)
-scale = Vector2(0.5, 0.5)
-script = ExtResource("4_nxyl1")
+[node name="Button" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("7_4665n")]
+position = Vector2(1528, 493)
 platforms = [NodePath("../../Platforms/Platform"), NodePath("../../Platforms/Platform3")]
 
-[node name="Area2D" type="Area2D" parent="Buttons/Button"]
-collision_layer = 64
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Button/Area2D"]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_d5bpe")
-
-[node name="Sprite2D" type="Sprite2D" parent="Buttons/Button"]
-texture = ExtResource("5_yojd7")
-
 [node name="Button2" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("7_4665n")]
-position = Vector2(93, 609)
-scale = Vector2(0.5, 0.5)
+position = Vector2(116, 624)
 platforms = [NodePath("../../Platforms/Platform2")]
+texture = ExtResource("6_xgd2a")
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -142,7 +124,67 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("8_3i64h")
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("8_v1tee")
+
+[node name="Platform2" type="Node2D" parent="Platforms"]
+position = Vector2(1562, 812)
+script = ExtResource("8_yvdqh")
+
+[node name="Path2D" type="Path2D" parent="Platforms/Platform2"]
+curve = SubResource("Curve2D_wlnkd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform2/Path2D"]
+position = Vector2(0, -50)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform2/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_rotation = false
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform2/Path2D/PathFollow2D"]
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_elkfk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(0, 0.916667, 1, 1)
+texture = ExtResource("8_v1tee")
+
+[node name="Platform3" type="Node2D" parent="Platforms"]
+position = Vector2(1795, 608)
+script = ExtResource("8_yvdqh")
+
+[node name="Path2D" type="Path2D" parent="Platforms/Platform3"]
+curve = SubResource("Curve2D_0qfll")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform3/Path2D"]
+position = Vector2(0, -400)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform3/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_rotation = false
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform3/Path2D/PathFollow2D"]
+scale = Vector2(1.5, 1)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_elkfk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("8_v1tee")
 
 [node name="PlatformX" type="Node2D" parent="Platforms"]
 visible = false
@@ -233,65 +275,9 @@ shape = SubResource("RectangleShape2D_7iup7")
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformZ/Path2D/PathFollow2D/AnimatableBody2D"]
 texture = ExtResource("5_yojd7")
 
-[node name="Platform2" type="Node2D" parent="Platforms"]
-position = Vector2(1562, 812)
-script = ExtResource("8_yvdqh")
-
-[node name="Path2D" type="Path2D" parent="Platforms/Platform2"]
-curve = SubResource("Curve2D_wlnkd")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform2/Path2D"]
-position = Vector2(0, -50)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform2/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_rotation = false
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform2/Path2D/PathFollow2D"]
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
-position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("8_v1tee")
-
-[node name="Platform3" type="Node2D" parent="Platforms"]
-position = Vector2(1795, 608)
-script = ExtResource("8_yvdqh")
-
-[node name="Path2D" type="Path2D" parent="Platforms/Platform3"]
-curve = SubResource("Curve2D_0qfll")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform3/Path2D"]
-position = Vector2(0, -400)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform3/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_rotation = false
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform3/Path2D/PathFollow2D"]
-scale = Vector2(1.5, 1)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
-position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("8_v1tee")
-
 [node name="Exit" parent="." instance=ExtResource("9_oatok")]
 position = Vector2(1352, 79)
+level_to_load = "res://Scenes/levels/level_5.tscn"
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -325,5 +311,3 @@ level_to_reload = "res://Scenes/levels/level_4.tscn"
 
 [connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
 [connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]
-[connection signal="body_entered" from="Buttons/Button/Area2D" to="Buttons/Button" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Buttons/Button/Area2D" to="Buttons/Button" method="_on_area_2d_body_exited"]

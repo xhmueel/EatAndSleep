@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://v536v8xajlp"]
+[gd_scene load_steps=28 format=4 uid="uid://v536v8xajlp"]
 
 [ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_4brl5"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_stv1q"]
@@ -6,8 +6,15 @@
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="4_4rbkk"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_ayy6p"]
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_robkb"]
+[ext_resource type="Texture2D" uid="uid://ce8u6c0xyfusf" path="res://Assets/buttons/press_button_blue.png" id="6_oelhx"]
 [ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="7_eglip"]
+[ext_resource type="Texture2D" uid="uid://btx6jxey0181n" path="res://Assets/buttons/press_button_darkblue.png" id="7_o0l0m"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_tfjpn"]
+[ext_resource type="Texture2D" uid="uid://cgfdfeqsbvk4r" path="res://Assets/buttons/press_button_gold.png" id="8_no4ul"]
+[ext_resource type="Texture2D" uid="uid://h886my33jsq2" path="res://Assets/buttons/press_button_green.png" id="9_3b4on"]
+[ext_resource type="Texture2D" uid="uid://c4hpksyoe40qo" path="res://Assets/buttons/press_button_pink.png" id="10_inm2r"]
+[ext_resource type="Texture2D" uid="uid://dtgj3sjn42vmk" path="res://Assets/buttons/press_button_purple.png" id="11_6liaf"]
+[ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_4utd7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
 texture = ExtResource("1_4brl5")
@@ -88,56 +95,56 @@ tile_map_data = PackedByteArray("AAALABAAAAABAAAAAAATABAAAAABAAAAAAAUABAAAAABAAA
 tile_set = SubResource("TileSet_diton")
 
 [node name="Sleepy" parent="." instance=ExtResource("2_stv1q")]
-position = Vector2(681, 621)
+position = Vector2(59, 1013)
 
 [node name="Eat" parent="." instance=ExtResource("3_y2cku")]
-position = Vector2(1480, 888)
+position = Vector2(1862, 1013)
 
 [node name="Exit" parent="." instance=ExtResource("7_tfjpn")]
 position = Vector2(957, 78)
+level_to_load = "res://Scenes/main_menu.tscn"
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(957, 78)
 
 [node name="Button" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(-810, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-810, 930)
 platforms = [NodePath("../../Platforms/Platform")]
 
 [node name="Button2" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(-646, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-646, 930)
 platforms = [NodePath("../../Platforms/Platform2")]
+texture = ExtResource("6_oelhx")
 
 [node name="Button3" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(-394, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-394, 930)
 platforms = [NodePath("../../Platforms/Platform3")]
+texture = ExtResource("7_o0l0m")
 
 [node name="Button4" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(-211, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-211, 930)
 platforms = [NodePath("../../Platforms/Platform4")]
+texture = ExtResource("8_no4ul")
 
 [node name="Button5" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(203, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(203, 930)
 platforms = [NodePath("../../Platforms/Platform5")]
+texture = ExtResource("9_3b4on")
 
 [node name="Button6" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(367, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(367, 930)
 platforms = [NodePath("../../Platforms/Platform6")]
+texture = ExtResource("10_inm2r")
 
 [node name="Button7" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(627, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(627, 930)
 platforms = [NodePath("../../Platforms/Platform7")]
+texture = ExtResource("11_6liaf")
 
 [node name="Button8" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_ayy6p")]
-position = Vector2(810, 912)
-scale = Vector2(0.5, 0.5)
+position = Vector2(810, 930)
 platforms = [NodePath("../../Platforms/Platform8")]
+texture = ExtResource("12_4utd7")
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -167,6 +174,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(1, 0, 0, 1)
 texture = ExtResource("7_eglip")
 
 [node name="Platform2" type="Node2D" parent="Platforms"]
@@ -196,6 +204,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(0.23, 1, 0.9615, 1)
 texture = ExtResource("7_eglip")
 
 [node name="Platform3" type="Node2D" parent="Platforms"]
@@ -224,6 +233,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(0, 0.5, 1, 1)
 texture = ExtResource("7_eglip")
 
 [node name="Platform4" type="Node2D" parent="Platforms"]
@@ -252,6 +262,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform4/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(1, 0.683333, 0, 1)
 texture = ExtResource("7_eglip")
 
 [node name="Platform5" type="Node2D" parent="Platforms"]
@@ -281,6 +292,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform5/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(0.417, 1, 0.34, 1)
 texture = ExtResource("7_eglip")
 
 [node name="Platform6" type="Node2D" parent="Platforms"]
@@ -310,6 +322,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform6/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(0.966, 0.32, 1, 1)
 texture = ExtResource("7_eglip")
 
 [node name="Platform7" type="Node2D" parent="Platforms"]
@@ -339,6 +352,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform7/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(0.4, 0, 1, 1)
 texture = ExtResource("7_eglip")
 
 [node name="Platform8" type="Node2D" parent="Platforms"]
@@ -367,6 +381,7 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform8/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(1, 0.983333, 0, 1)
 texture = ExtResource("7_eglip")
 
 [node name="PlatformA" type="Node2D" parent="Platforms"]
