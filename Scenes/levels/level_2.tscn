@@ -32,10 +32,10 @@ tile_set = ExtResource("1_hf100")
 y_sort_origin = 1
 
 [node name="Sleepy" parent="." instance=ExtResource("2_uj3ou")]
-position = Vector2(1311, 484)
+position = Vector2(1303, 1004)
 
 [node name="Eat" parent="." instance=ExtResource("3_ox1we")]
-position = Vector2(1400, 492)
+position = Vector2(1392, 1012)
 
 [node name="Button" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_843fj")]
 position = Vector2(1901, 418)
