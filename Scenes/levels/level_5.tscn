@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dnn83k2a68qc1"]
+[gd_scene load_steps=35 format=4 uid="uid://dnn83k2a68qc1"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="2_io5co"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_mr2n8"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="9_v1s7l"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="10_djcfo"]
 [ext_resource type="Texture2D" uid="uid://c38jowi0cgxr" path="res://Assets/backgrounds/background4.png" id="10_hv025"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="12_2sfuu"]
 [ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="12_xsb7b"]
 [ext_resource type="Script" path="res://Scripts/firebal.gd" id="13_chuiw"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="13_ry674"]
 [ext_resource type="Script" path="res://Scripts/fireballBehavior.gd" id="14_ouu6u"]
 [ext_resource type="Texture2D" uid="uid://b5ogevp8pu50m" path="res://Assets/fireball.png" id="15_nk0hl"]
 [ext_resource type="Script" path="res://Scripts/blinking.gd" id="16_cv5m6"]
@@ -309,9 +311,10 @@ shape = SubResource("RectangleShape2D_elkfk")
 modulate = Color(0, 0.8, 1, 1)
 texture = ExtResource("9_52gnj")
 
-[node name="Exit" parent="." instance=ExtResource("7_lyxql")]
+[node name="Exit" parent="." node_paths=PackedStringArray("transition_player") instance=ExtResource("7_lyxql")]
 position = Vector2(1282, 99)
 level_to_load = "res://Scenes/levels/level_6.tscn"
+transition_player = NodePath("../CanvasLayer/AnimatedSprite2D")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -337,6 +340,10 @@ texture = ExtResource("10_hv025")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_v1s7l")]
 level_to_load = "res://Scenes/levels/level_5.tscn"
+
+[node name="AnimatedSprite2D" parent="CanvasLayer" instance=ExtResource("12_2sfuu")]
+position = Vector2(960, 540)
+script = ExtResource("13_ry674")
 
 [node name="FlyingArea" type="Area2D" parent="."]
 position = Vector2(144, 356)
@@ -385,6 +392,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pio4a")
 }
 
+[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D" to="CanvasLayer/AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
 [connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Fireball/Path2D/PathFollow2D/Area" to="Fireball/Path2D/PathFollow2D/Area" method="_on_body_entered"]

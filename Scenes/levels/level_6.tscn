@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://v536v8xajlp"]
+[gd_scene load_steps=30 format=4 uid="uid://v536v8xajlp"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_htu7r"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_stv1q"]
@@ -16,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_4utd7"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_2xpam"]
 [ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_efoni"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="17_bpjc8"]
+[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="17_bpjc8"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="18_c1eei"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="19_lxb56"]
 
 [sub_resource type="Curve2D" id="Curve2D_kmcl7"]
 _data = {
@@ -92,9 +94,10 @@ position = Vector2(59, 1013)
 [node name="Eat" parent="." instance=ExtResource("3_y2cku")]
 position = Vector2(1862, 1013)
 
-[node name="Exit" parent="." instance=ExtResource("7_tfjpn")]
+[node name="Exit" parent="." node_paths=PackedStringArray("transition_player") instance=ExtResource("7_tfjpn")]
 position = Vector2(957, 98)
 level_to_load = "res://Scenes/main_menu.tscn"
+transition_player = NodePath("../CanvasLayer/AnimatedSprite2D")
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(957, 78)
@@ -620,3 +623,9 @@ texture = ExtResource("16_efoni")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_bpjc8")]
 level_to_load = "res://Scenes/levels/level_5.tscn"
+
+[node name="AnimatedSprite2D" parent="CanvasLayer" instance=ExtResource("18_c1eei")]
+position = Vector2(960, 540)
+script = ExtResource("19_lxb56")
+
+[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D" to="CanvasLayer/AnimatedSprite2D" method="_on_animation_finished"]

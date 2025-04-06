@@ -1,6 +1,7 @@
 extends Area2D
 
 @export_file("*.tscn") var level_to_load
+@export var transition_player : AnimatedSprite2D
 
 @onready var win_jingle_sfx = preload("res://Audio/win jingle wan wan wan.mp3")
 
@@ -16,6 +17,9 @@ func _process(delta: float) -> void:
 
 func change_level():
 	print("loading level : " + level_to_load)
+	transition_player.show()
+	transition_player.play("fade_out")
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file(level_to_load)
 	AudioManager.play_fx(win_jingle_sfx, 1.0)
 
