@@ -19,5 +19,5 @@ func deactivate() -> void:
 	anim.play("disappear")
 
 func reload_level():
-	print("loading level : " + level_to_reload)
+	print("loading level : ", level_to_reload)
 	get_tree().change_scene_to_file(level_to_reload)
