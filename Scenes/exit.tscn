@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmici5dcwxg8r"]
+[gd_scene load_steps=4 format=3 uid="uid://cmici5dcwxg8r"]
 
 [ext_resource type="Script" path="res://Scenes/exit.gd" id="1_781ou"]
+[ext_resource type="Texture2D" uid="uid://ckn4ypjnjbr7r" path="res://Assets/exit_portal.png" id="2_blp0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbc2g"]
 size = Vector2(152, 218)
@@ -11,6 +12,10 @@ script = ExtResource("1_781ou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bbc2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.849011, 0.849011)
+texture = ExtResource("2_blp0w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

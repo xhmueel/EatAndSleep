@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://clksp22ne8o6s"]
+
+[ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="1_sutc0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oor5f"]
+size = Vector2(308, 313)
+
+[node name="FlyingArea" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_sutc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oor5f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
