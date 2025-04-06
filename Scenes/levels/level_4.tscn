@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://w6fytnvg8j4s"]
+[gd_scene load_steps=22 format=4 uid="uid://w6fytnvg8j4s"]
 
 [ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="1_gatq6"]
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_ve884"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="9_oatok"]
 [ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="11_hy7qx"]
 [ext_resource type="Texture2D" uid="uid://b2ja2dq8a2vi5" path="res://Assets/backgrounds/background3.png" id="12_lgtn3"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="13_iqw4v"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="14_4geku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxcr3"]
 size = Vector2(308, 506)
@@ -190,9 +192,10 @@ shape = SubResource("RectangleShape2D_elkfk")
 modulate = Color(1, 0, 0, 1)
 texture = ExtResource("8_3i64h")
 
-[node name="Exit" parent="." instance=ExtResource("9_oatok")]
+[node name="Exit" parent="." node_paths=PackedStringArray("transition_player") instance=ExtResource("9_oatok")]
 position = Vector2(1352, 100)
 level_to_load = "res://Scenes/levels/level_5.tscn"
+transition_player = NodePath("../CanvasLayer/AnimatedSprite2D")
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -274,10 +277,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]Only Sleep can enter colorful area.[center]"
+text = "[center]Only Eat can enter colorful area.[center]"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_hy7qx")]
 level_to_load = "res://Scenes/levels/level_4.tscn"
 
+[node name="AnimatedSprite2D" parent="CanvasLayer" instance=ExtResource("13_iqw4v")]
+position = Vector2(960, 540)
+script = ExtResource("14_4geku")
+
 [connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
 [connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]
+[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D" to="CanvasLayer/AnimatedSprite2D" method="_on_animation_finished"]

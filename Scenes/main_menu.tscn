@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnsrk1ec8yl7d"]
+[gd_scene load_steps=9 format=3 uid="uid://cnsrk1ec8yl7d"]
 
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="1_g63wb"]
 [ext_resource type="Script" path="res://Scripts/exit_button.gd" id="2_3jman"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddfpmvnkgoh4b" path="res://Assets/quit_black.png" id="5_b2ccc"]
 [ext_resource type="Texture2D" uid="uid://wi2upkfrvygo" path="res://Assets/start_black.png" id="5_o1ltd"]
 [ext_resource type="Texture2D" uid="uid://b66owgmjyurj2" path="res://Assets/quit_purple.png" id="7_2vcwr"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="8_jtsa4"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -22,7 +23,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("3_bkk6j")
 
-[node name="Start" type="TextureButton" parent="."]
+[node name="Start" type="TextureButton" parent="." node_paths=PackedStringArray("transition_player")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,6 +41,7 @@ texture_normal = ExtResource("4_qw1xv")
 texture_hover = ExtResource("5_o1ltd")
 script = ExtResource("1_g63wb")
 level_to_load = "res://Scenes/levels/level_1.tscn"
+transition_player = NodePath("../AnimatedSprite2D")
 
 [node name="Exit" type="TextureButton" parent="."]
 layout_mode = 1
@@ -57,6 +59,10 @@ grow_vertical = 2
 texture_normal = ExtResource("5_b2ccc")
 texture_hover = ExtResource("7_2vcwr")
 script = ExtResource("2_3jman")
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("8_jtsa4")]
+visible = false
+position = Vector2(960, 540)
 
 [connection signal="pressed" from="Start" to="Start" method="_on_pressed"]
 [connection signal="pressed" from="Exit" to="Exit" method="_on_pressed"]

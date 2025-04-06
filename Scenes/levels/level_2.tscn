@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://fa3r1rrqb2xg"]
+[gd_scene load_steps=16 format=4 uid="uid://fa3r1rrqb2xg"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_hf100"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_uj3ou"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="6_d46f7"]
 [ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="6_jw28c"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_40hwj"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="7_vrm8j"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="8_8sw2e"]
 [ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="8_fcpq8"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="8_ltuia"]
 [ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="10_g8wr3"]
 
 [sub_resource type="Curve2D" id="Curve2D_7sehn"]
@@ -53,9 +55,10 @@ position = Vector2(1901, 418)
 rotation = -1.5708
 platforms = [NodePath("../Platform")]
 
-[node name="Exit" parent="." instance=ExtResource("7_40hwj")]
+[node name="Exit" parent="." node_paths=PackedStringArray("transition_player") instance=ExtResource("7_40hwj")]
 position = Vector2(1779, 98)
 level_to_load = "res://Scenes/levels/level_3.tscn"
+transition_player = NodePath("../CanvasLayer/AnimatedSprite2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -67,14 +70,14 @@ offset_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 2.00001
-offset_top = 903.0
-offset_right = 258.0
-offset_bottom = 1027.0
-scale = Vector2(0.962773, 0.962773)
+offset_left = 1.0
+offset_top = 898.0
+offset_right = 257.0
+offset_bottom = 1022.0
+scale = Vector2(1.00055, 1.00055)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel"]
-custom_minimum_size = Vector2(230, 90)
+custom_minimum_size = Vector2(240, 90)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -87,18 +90,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]Approach buttons to activate them. There are different types.[center]"
+text = "[center]Approach buttons to activate them. Discover the different types.[center]"
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 227.0
-offset_right = 294.0
-offset_bottom = 351.0
-scale = Vector2(0.962773, 0.962773)
+offset_left = 31.0
+offset_top = 223.0
+offset_right = 287.0
+offset_bottom = 347.0
+scale = Vector2(1.01812, 1.01812)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel2"]
-custom_minimum_size = Vector2(250, 115)
+custom_minimum_size = Vector2(250, 120)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,18 +114,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]As Eat press \"Space\" to eat \"Sleepy\" when she's sleeping and press again to launch her.[center]"
+text = "[center]As Eat, press \"Space\" to eat Sleepy, when she's sleeping. Then, press again to launch her.[center]"
 
 [node name="Panel3" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1227.0
-offset_top = 650.0
-offset_right = 1483.0
-offset_bottom = 774.0
+offset_left = 1223.0
+offset_top = 645.0
+offset_right = 1487.0
+offset_bottom = 779.0
 scale = Vector2(0.946997, 0.946997)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel3"]
-custom_minimum_size = Vector2(240, 110)
+custom_minimum_size = Vector2(250, 120)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,10 +138,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]As Sleepy press \"Shift\" to Sleep. Shadow can enter and float in dark areas[center]"
+text = "[center]As Sleepy, press \"Shift\" to Sleep. Shadow can enter and float in dark areas.[center]"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_fcpq8")]
 level_to_load = "res://Scenes/levels/level_2.tscn"
+
+[node name="AnimatedSprite2D" parent="CanvasLayer" instance=ExtResource("7_vrm8j")]
+position = Vector2(960, 540)
+script = ExtResource("8_ltuia")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -155,7 +162,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1040.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_jw28c")
@@ -200,5 +207,6 @@ script = ExtResource("10_g8wr3")
 position = Vector2(75, 228.75)
 shape = SubResource("RectangleShape2D_v8ws1")
 
+[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D" to="CanvasLayer/AnimatedSprite2D" method="_on_animation_finished"]
 [connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
 [connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]

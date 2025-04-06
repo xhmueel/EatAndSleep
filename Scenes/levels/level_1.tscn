@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://n2604dv82jc5"]
+[gd_scene load_steps=13 format=4 uid="uid://n2604dv82jc5"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_aco3t"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_yptaq"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="5_v4nkb"]
 [ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="7_d0op4"]
 [ext_resource type="Texture2D" uid="uid://dubxptsw1qk0g" path="res://Assets/backgrounds/background1.png" id="7_fweyh"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="7_owfi7"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="8_5dbl0"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="8_6wl8p"]
 
 [sub_resource type="Curve2D" id="Curve2D_yu8ox"]
@@ -38,9 +40,10 @@ position = Vector2(898, 1006)
 [node name="Eat" parent="." instance=ExtResource("3_uydrd")]
 position = Vector2(978, 1010)
 
-[node name="Exit" parent="." instance=ExtResource("4_rcfs3")]
+[node name="Exit" parent="." node_paths=PackedStringArray("transition_player") instance=ExtResource("4_rcfs3")]
 position = Vector2(960, 161)
 level_to_load = "res://Scenes/levels/level_2.tscn"
+transition_player = NodePath("../CanvasLayer/AnimatedSprite2D")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -1
@@ -91,7 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]Use W to Jump, A and D to walk sideways[center]"
+text = "[center]Use W to Jump, A and D to walk sideways.[center]"
 
 [node name="Panel3" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -102,7 +105,7 @@ offset_bottom = 1031.0
 scale = Vector2(0.946997, 0.946997)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel3"]
-custom_minimum_size = Vector2(240, 90)
+custom_minimum_size = Vector2(240, 115)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,10 +118,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[center]Use \"Up arrow\" to Jump, \"Left arrow\" and \"Right arrow\" to walk sideways[center]"
+text = "[center]Use \"Up arrow\" to Jump, \"Left arrow\" and \"Right arrow\" to walk sideways.[center]"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_d0op4")]
 level_to_load = "res://Scenes/levels/level_1.tscn"
+
+[node name="AnimatedSprite2D" parent="CanvasLayer" instance=ExtResource("7_owfi7")]
+z_index = 1
+position = Vector2(960, 540)
+script = ExtResource("8_5dbl0")
 
 [node name="Platform" type="Node2D" parent="."]
 position = Vector2(961, 793)
@@ -150,3 +158,5 @@ shape = SubResource("RectangleShape2D_uydse")
 [node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.635294, 0.345098, 0.396078, 1)
 texture = ExtResource("8_6wl8p")
+
+[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D" to="CanvasLayer/AnimatedSprite2D" method="_on_animation_finished"]
