@@ -96,7 +96,7 @@ position = Vector2(1862, 1013)
 
 [node name="Exit" parent="." node_paths=PackedStringArray("transition_player") instance=ExtResource("7_tfjpn")]
 position = Vector2(957, 98)
-level_to_load = "res://Scenes/main_menu.tscn"
+level_to_load = "res://Scenes/levels/level_7.tscn"
 transition_player = NodePath("../CanvasLayer/AnimatedSprite2D")
 
 [node name="Buttons" type="Node2D" parent="."]
