@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://fa3r1rrqb2xg"]
+[gd_scene load_steps=11 format=4 uid="uid://fa3r1rrqb2xg"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_hf100"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_uj3ou"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_ox1we"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_843fj"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="6_d46f7"]
+[ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="6_jw28c"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_40hwj"]
-[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="8_38c0r"]
+[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="8_8sw2e"]
 
 [sub_resource type="Curve2D" id="Curve2D_7sehn"]
 _data = {
@@ -125,6 +126,26 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center]As Sleepy press \"Shift\" to Sleep. Shadow can enter and float in dark areas[center]"
 
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_jw28c")
+
 [node name="Platform" type="Node2D" parent="."]
 position = Vector2(845, 384)
 script = ExtResource("6_d46f7")
@@ -152,5 +173,5 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("8_38c0r")
+modulate = Color(0.960784, 0.0509804, 0.054902, 1)
+texture = ExtResource("8_8sw2e")

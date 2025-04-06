@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://co80owe4jdmxl"]
 
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="1_tqd4p"]
-[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="2_nmnh1"]
+[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="2_g2fsb"]
 
 [sub_resource type="Curve2D" id="Curve2D_onw2o"]
 
@@ -32,4 +32,4 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("2_nmnh1")
+texture = ExtResource("2_g2fsb")

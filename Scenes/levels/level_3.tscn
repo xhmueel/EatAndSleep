@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cvuqgvfmacbpx"]
+[gd_scene load_steps=14 format=4 uid="uid://cvuqgvfmacbpx"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_gasat"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_0kvgk"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="6_fh3bq"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="8_yhnuf"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="9_cfxp7"]
-[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="10_l7fmq"]
+[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="9_mtt4c"]
+[ext_resource type="Texture2D" uid="uid://hklwkfh3onbx" path="res://Assets/backgrounds/background2.png" id="10_a1ba8"]
 
 [sub_resource type="Curve2D" id="Curve2D_2ikvw"]
 _data = {
@@ -131,9 +132,29 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0, 0, 1)
-texture = ExtResource("10_l7fmq")
+texture = ExtResource("9_mtt4c")
 
 [node name="Button2" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D" node_paths=PackedStringArray("platforms") instance=ExtResource("4_42otu")]
 position = Vector2(3.21865e-06, -31)
 scale = Vector2(0.30303, 1)
 platforms = [NodePath("../../../..")]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_a1ba8")

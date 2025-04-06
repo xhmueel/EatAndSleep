@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://v536v8xajlp"]
+[gd_scene load_steps=29 format=4 uid="uid://v536v8xajlp"]
 
 [ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_4brl5"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_stv1q"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_ayy6p"]
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_robkb"]
 [ext_resource type="Texture2D" uid="uid://ce8u6c0xyfusf" path="res://Assets/buttons/press_button_blue.png" id="6_oelhx"]
-[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="7_eglip"]
 [ext_resource type="Texture2D" uid="uid://btx6jxey0181n" path="res://Assets/buttons/press_button_darkblue.png" id="7_o0l0m"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_tfjpn"]
 [ext_resource type="Texture2D" uid="uid://cgfdfeqsbvk4r" path="res://Assets/buttons/press_button_gold.png" id="8_no4ul"]
@@ -15,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c4hpksyoe40qo" path="res://Assets/buttons/press_button_pink.png" id="10_inm2r"]
 [ext_resource type="Texture2D" uid="uid://dtgj3sjn42vmk" path="res://Assets/buttons/press_button_purple.png" id="11_6liaf"]
 [ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_4utd7"]
+[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_2xpam"]
+[ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_efoni"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
 texture = ExtResource("1_4brl5")
@@ -175,7 +176,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0, 0, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="Platform2" type="Node2D" parent="Platforms"]
 position = Vector2(1744, 141)
@@ -205,7 +206,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.23, 1, 0.9615, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="Platform3" type="Node2D" parent="Platforms"]
 position = Vector2(1467, 958)
@@ -234,7 +235,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0, 0.5, 1, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="Platform4" type="Node2D" parent="Platforms"]
 position = Vector2(1609, 779)
@@ -263,7 +264,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform4/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0.683333, 0, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="Platform5" type="Node2D" parent="Platforms"]
 position = Vector2(271, 824)
@@ -293,7 +294,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform5/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.417, 1, 0.34, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="Platform6" type="Node2D" parent="Platforms"]
 position = Vector2(69, 690)
@@ -323,7 +324,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform6/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.966, 0.32, 1, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="Platform7" type="Node2D" parent="Platforms"]
 position = Vector2(447, 951)
@@ -353,7 +354,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform7/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.4, 0, 1, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="Platform8" type="Node2D" parent="Platforms"]
 position = Vector2(666, 654)
@@ -382,7 +383,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform8/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0.983333, 0, 1)
-texture = ExtResource("7_eglip")
+texture = ExtResource("14_2xpam")
 
 [node name="PlatformA" type="Node2D" parent="Platforms"]
 visible = false
@@ -604,3 +605,23 @@ shape = SubResource("RectangleShape2D_7iup7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformH/Path2D/PathFollow2D/AnimatableBody2D"]
 texture = ExtResource("5_robkb")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_efoni")

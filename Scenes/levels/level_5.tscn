@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dnn83k2a68qc1"]
+[gd_scene load_steps=14 format=4 uid="uid://dnn83k2a68qc1"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="2_io5co"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_mr2n8"]
@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ce8u6c0xyfusf" path="res://Assets/buttons/press_button_blue.png" id="6_03o47"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_lyxql"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="8_eyrjm"]
-[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="9_28s6o"]
+[ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="9_52gnj"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="10_djcfo"]
+[ext_resource type="Texture2D" uid="uid://c38jowi0cgxr" path="res://Assets/backgrounds/background4.png" id="10_hv025"]
 
 [sub_resource type="Curve2D" id="Curve2D_6dlps"]
 _data = {
@@ -97,7 +98,7 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(1, 0, 0, 1)
-texture = ExtResource("9_28s6o")
+texture = ExtResource("9_52gnj")
 
 [node name="Platform2" type="Node2D" parent="Platforms"]
 position = Vector2(608, 189)
@@ -126,8 +127,28 @@ shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0, 0.8, 1, 1)
-texture = ExtResource("9_28s6o")
+texture = ExtResource("9_52gnj")
 
 [node name="Exit" parent="." instance=ExtResource("7_lyxql")]
 position = Vector2(1282, 78)
 level_to_load = "res://Scenes/levels/level_6.tscn"
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_hv025")
