@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cvuqgvfmacbpx"]
+[gd_scene load_steps=15 format=4 uid="uid://cvuqgvfmacbpx"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_gasat"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_0kvgk"]
@@ -9,15 +9,19 @@
 [ext_resource type="Script" path="res://Scripts/button.gd" id="7_rmucy"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="8_yhnuf"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="9_cfxp7"]
+[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="10_l7fmq"]
 
 [sub_resource type="Curve2D" id="Curve2D_2ikvw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -500, 0, 0, 0, 0, 1, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -500, 0, 0, 0, 0, 0, -50)
 }
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0r14"]
 size = Vector2(125, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elkfk"]
+size = Vector2(126.5, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5bpe"]
 size = Vector2(125, 122)
@@ -41,50 +45,32 @@ position = Vector2(113, 1002)
 scale = Vector2(0.3, 0.3)
 platforms = [NodePath("../Platform")]
 
-[node name="Platform" type="Node2D" parent="."]
-position = Vector2(994, 1042)
+[node name="Platform3" type="Node2D" parent="."]
+position = Vector2(1640, 954)
 script = ExtResource("5_f535t")
 speed = 200
 
-[node name="Path2D" type="Path2D" parent="Platform"]
+[node name="Path2D" type="Path2D" parent="Platform3"]
 curve = SubResource("Curve2D_2ikvw")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform3/Path2D"]
 position = Vector2(0, -500)
 rotates = false
 loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform3/Path2D/PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
 update_scale = false
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform3/Path2D/PathFollow2D"]
 scale = Vector2(3.3, 0.3)
 collision_layer = 4
 collision_mask = 19
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_a0r14")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("6_fh3bq")
-
-[node name="Button2" type="Node2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D" node_paths=PackedStringArray("platforms")]
-position = Vector2(0.606049, -126.667)
-scale = Vector2(0.0909091, 1)
-script = ExtResource("7_rmucy")
-button_type = 1
-platforms = [NodePath("../../../..")]
-
-[node name="Area2D" type="Area2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2"]
-collision_layer = 64
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D"]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_d5bpe")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2"]
+[node name="Sprite2D" type="Sprite2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 texture = ExtResource("6_fh3bq")
 
 [node name="Exit" parent="." instance=ExtResource("8_yhnuf")]
@@ -120,6 +106,53 @@ level_to_reload = "res://Scenes/levels/level_3.tscn"
 [node name="Spikes11" parent="Spikes" instance=ExtResource("9_cfxp7")]
 position = Vector2(1166, 1054)
 level_to_reload = "res://Scenes/levels/level_3.tscn"
+
+[node name="Platform" type="Node2D" parent="."]
+position = Vector2(994, 1042)
+script = ExtResource("5_f535t")
+
+[node name="Path2D" type="Path2D" parent="Platform"]
+curve = SubResource("Curve2D_2ikvw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+position = Vector2(0, -500)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_rotation = false
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+scale = Vector2(3.3, 1)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_elkfk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("10_l7fmq")
+
+[node name="Button2" type="Node2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D" node_paths=PackedStringArray("platforms")]
+position = Vector2(2.12122, -35.0001)
+scale = Vector2(0.0909091, 0.3)
+script = ExtResource("7_rmucy")
+button_type = 1
+platforms = [NodePath("../../../..")]
+
+[node name="Area2D" type="Area2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2"]
+collision_layer = 64
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_d5bpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2"]
+texture = ExtResource("6_fh3bq")
 
 [connection signal="body_entered" from="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D" to="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2/Area2D" to="Platform/Path2D/PathFollow2D/AnimatableBody2D/Button2" method="_on_area_2d_body_exited"]

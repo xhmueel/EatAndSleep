@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://co80owe4jdmxl"]
 
-[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="1_cpatg"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="1_tqd4p"]
+[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="2_nmnh1"]
 
 [sub_resource type="Curve2D" id="Curve2D_onw2o"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
-size = Vector2(125, 125)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elkfk"]
+size = Vector2(126.5, 27)
 
 [node name="Platform" type="Node2D"]
 script = ExtResource("1_tqd4p")
@@ -20,6 +20,7 @@ loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
+update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D/PathFollow2D"]
@@ -27,7 +28,8 @@ collision_layer = 4
 collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_elkfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("1_cpatg")
+texture = ExtResource("2_nmnh1")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://n2604dv82jc5"]
+[gd_scene load_steps=11 format=4 uid="uid://n2604dv82jc5"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_aco3t"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_yptaq"]
@@ -6,15 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="4_rcfs3"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="5_v4nkb"]
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="6_gjn6t"]
+[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="7_00h5f"]
 
 [sub_resource type="Curve2D" id="Curve2D_yu8ox"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -950, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -300, 0, 0, 0, 0, 0, 0)
 }
 point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0r14"]
 size = Vector2(125, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
+size = Vector2(126.5, 27)
 
 [node name="Level1" type="Node2D"]
 
@@ -34,7 +38,8 @@ position = Vector2(978, 1010)
 position = Vector2(960, 140)
 level_to_load = "res://Scenes/levels/level_2.tscn"
 
-[node name="Platform" type="Node2D" parent="."]
+[node name="Platform3" type="Node2D" parent="."]
+visible = false
 position = Vector2(961, 791)
 scale = Vector2(1.8, 0.3)
 script = ExtResource("5_v4nkb")
@@ -42,25 +47,25 @@ speed = 300
 is_loop_path = true
 is_start_moving = true
 
-[node name="Path2D" type="Path2D" parent="Platform"]
+[node name="Path2D" type="Path2D" parent="Platform3"]
 curve = SubResource("Curve2D_yu8ox")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform3/Path2D"]
 rotates = false
 loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform3/Path2D/PathFollow2D"]
 remote_path = NodePath("../AnimatableBody2D")
 update_scale = false
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform3/Path2D/PathFollow2D"]
 collision_layer = 4
 collision_mask = 19
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_a0r14")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 texture = ExtResource("6_gjn6t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -117,3 +122,32 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center]Use \"Up arrow\" to Jump, \"Left arrow\" and \"Right arrow\" to walk sideways[center]"
+
+[node name="Platform" type="Node2D" parent="."]
+position = Vector2(962, 780)
+script = ExtResource("5_v4nkb")
+is_loop_path = true
+is_start_moving = true
+
+[node name="Path2D" type="Path2D" parent="Platform"]
+curve = SubResource("Curve2D_yu8ox")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+scale = Vector2(1.7, 1)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+texture = ExtResource("7_00h5f")
