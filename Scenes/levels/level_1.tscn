@@ -15,7 +15,7 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_elkfk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uydse"]
 size = Vector2(126.5, 27)
 
 [node name="Level1" type="Node2D"]
@@ -145,7 +145,7 @@ collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
+shape = SubResource("RectangleShape2D_uydse")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
 modulate = Color(0.635294, 0.345098, 0.396078, 1)
