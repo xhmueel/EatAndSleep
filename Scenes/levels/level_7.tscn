@@ -14,11 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/blinking.gd" id="13_dk7ck"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="13_xrhwf"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_xh22w"]
-[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="16_b2nvl"]
-[ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_selwl"]
-[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="17_36ueh"]
-[ext_resource type="Script" path="res://Scripts/transition.gd" id="18_jbocm"]
-[ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="19_w3kq3"]
+[ext_resource type="Texture2D" uid="uid://c5mdnm8najl2" path="res://Assets/backgrounds/background7.png" id="15_2f42p"]
 
 [sub_resource type="Curve2D" id="Curve2D_dbv03"]
 _data = {
@@ -221,15 +217,6 @@ _data = {
 "blink": SubResource("Animation_ui853"),
 "disappear": SubResource("Animation_3l7ql")
 }
-
-[sub_resource type="Curve2D" id="Curve2D_s24tq"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -270, 0)
-}
-point_count = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_am3gi"]
-size = Vector2(924, 331)
 
 [node name="Level7" type="Node2D"]
 
@@ -524,26 +511,5 @@ grow_vertical = 2
 texture = ExtResource("15_2f42p")
 flip_v = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("16_b2nvl")]
-level_to_load = "res://Scenes/levels/level_5.tscn"
-
-[node name="AnimatedSprite2D" parent="CanvasLayer" instance=ExtResource("17_36ueh")]
-position = Vector2(960, 540)
-script = ExtResource("18_jbocm")
-
-[node name="FlyingArea" type="Area2D" parent="."]
-position = Vector2(1159, 904)
-collision_layer = 8
-collision_mask = 2
-script = ExtResource("19_w3kq3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyingArea"]
-position = Vector2(312, -33.5)
-shape = SubResource("RectangleShape2D_am3gi")
-
-[connection signal="body_entered" from="Platforms/Platform4/Fireball/Path2D/PathFollow2D/Area" to="Platforms/Platform4/Fireball/Path2D/PathFollow2D/Area" method="_on_body_entered"]
-[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D" to="CanvasLayer/AnimatedSprite2D" method="_on_animation_finished"]
-[connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
-[connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]
+[connection signal="body_entered" from="Platforms/Fireball/Path2D/PathFollow2D/Area" to="Platforms/Fireball/Path2D/PathFollow2D/Area" method="_on_body_entered"]
+[connection signal="body_entered" from="Platforms/Fireball2/Path2D/PathFollow2D/Area" to="Platforms/Fireball2/Path2D/PathFollow2D/Area" method="_on_body_entered"]
