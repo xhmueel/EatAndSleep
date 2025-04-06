@@ -246,8 +246,9 @@ animations = [{
 }]
 
 [node name="Nightmare" type="CharacterBody2D" groups=["Nightmare", "Players"]]
+z_index = 1
 collision_layer = 2
-collision_mask = 4
+collision_mask = 132
 script = ExtResource("1_5rfhl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

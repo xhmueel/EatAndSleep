@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dnn83k2a68qc1"]
+[gd_scene load_steps=17 format=4 uid="uid://dnn83k2a68qc1"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="2_io5co"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_mr2n8"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="9_v1s7l"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="10_djcfo"]
 [ext_resource type="Texture2D" uid="uid://c38jowi0cgxr" path="res://Assets/backgrounds/background4.png" id="10_hv025"]
+[ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="12_xsb7b"]
 
 [sub_resource type="Curve2D" id="Curve2D_6dlps"]
 _data = {
@@ -26,6 +27,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 280)
 }
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_peomr"]
+size = Vector2(373, 749.5)
 
 [node name="Level5" type="Node2D"]
 
@@ -158,3 +162,16 @@ texture = ExtResource("10_hv025")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_v1s7l")]
 level_to_load = "res://Scenes/levels/level_5.tscn"
+
+[node name="FlyingArea" type="Area2D" parent="."]
+position = Vector2(144, 356)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("12_xsb7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyingArea"]
+position = Vector2(46.5, 218.25)
+shape = SubResource("RectangleShape2D_peomr")
+
+[connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
+[connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]
