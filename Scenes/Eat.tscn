@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dik8ukrhyif1m"]
+[gd_scene load_steps=55 format=3 uid="uid://dik8ukrhyif1m"]
 
 [ext_resource type="Script" path="res://Scripts/eat.gd" id="1_berei"]
 [ext_resource type="Texture2D" uid="uid://5opvn016i0lf" path="res://Assets/eat_fall.png" id="2_mlagb"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cbku7nqvpycv1" path="res://Assets/eat_walk_full.png" id="5_uhea2"]
 [ext_resource type="Texture2D" uid="uid://7cg4iex2yda" path="res://Assets/eat_jump_full.png" id="7_ac7or"]
 [ext_resource type="Texture2D" uid="uid://cd3b8kt2miubi" path="res://Assets/eat_fall_full.png" id="8_gwiwv"]
+[ext_resource type="AudioStream" uid="uid://b3xucol42gdte" path="res://Audio/fshh.mp3" id="9_co10e"]
+[ext_resource type="AudioStream" uid="uid://cdcjd21gxu0y3" path="res://Audio/wee.mp3" id="10_k03oj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_im5nl"]
 radius = 29.0
@@ -390,6 +392,12 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8wuvl")
 animation = &"eat"
 autoplay = "idle"
+
+[node name="EatAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_co10e")
+
+[node name="LaunchAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_k03oj")
 
 [connection signal="body_entered" from="EatArea" to="." method="_on_eat_area_body_entered"]
 [connection signal="body_exited" from="EatArea" to="." method="_on_eat_area_body_exited"]

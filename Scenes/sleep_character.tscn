@@ -1,10 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://bs8vjgp70nnqg"]
+[gd_scene load_steps=36 format=3 uid="uid://bs8vjgp70nnqg"]
 
 [ext_resource type="Script" path="res://Scripts/sleep_character.gd" id="1_gu5lk"]
 [ext_resource type="Texture2D" uid="uid://d2u7n42sdlplu" path="res://Assets/sleep_walk.png" id="2_ati1r"]
 [ext_resource type="Texture2D" uid="uid://ciegtg2qcxmka" path="res://Assets/sleep_falling_asleep.png" id="3_aygie"]
 [ext_resource type="Texture2D" uid="uid://duq0tr21vkcdx" path="res://Assets/sleep_jump.png" id="3_l5ncy"]
 [ext_resource type="Texture2D" uid="uid://b27d8regs48ia" path="res://Assets/sleep_sleeping.png" id="5_d4wqn"]
+[ext_resource type="AudioStream" uid="uid://brngsoat3h8d3" path="res://Audio/yawn.mp3" id="6_4ifo3"]
+[ext_resource type="AudioStream" uid="uid://csybjvoo68h5t" path="res://Audio/ahn.mp3" id="7_0wujm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhm1u"]
 radius = 26.0
@@ -245,3 +247,9 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_uu4ww")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="SleepAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4ifo3")
+
+[node name="WakeAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0wujm")

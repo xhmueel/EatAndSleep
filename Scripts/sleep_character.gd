@@ -41,6 +41,7 @@ func process_sleeping(delta : float) -> void:
 		collision_shape.position.y -= SLEEP_OFFSET_Y
 		collision_shape.scale.y += 0.4
 		is_sleeping = false
+		$WakeAudio.play()
 		
 	if not animated_sprite.is_playing():
 		animated_sprite.play("sleeping")
@@ -120,4 +121,5 @@ func spawn_nightmare() -> void:
 	var nightmare_character = nightmare_character_scene.instantiate()
 	nightmare_character.global_position = self.global_position
 	self.get_parent().add_child(nightmare_character)
+	$SleepAudio.play()
 	
