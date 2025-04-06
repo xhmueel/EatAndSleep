@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://v536v8xajlp"]
+[gd_scene load_steps=28 format=4 uid="uid://v536v8xajlp"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_htu7r"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_stv1q"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_4utd7"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_2xpam"]
 [ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_efoni"]
+[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="17_bpjc8"]
 
 [sub_resource type="Curve2D" id="Curve2D_kmcl7"]
 _data = {
@@ -614,3 +615,8 @@ offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_efoni")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_bpjc8")]
+level_to_load = "res://Scenes/levels/level_5.tscn"

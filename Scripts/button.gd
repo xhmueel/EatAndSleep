@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Players"):
+		$PressedAudio.play()
 		match button_type:
 			BUTTON_TYPE.PRESS, BUTTON_TYPE.TIMED:
 				activate_objects(true)

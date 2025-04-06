@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		# Spit sleepy
 		elif sleepy_eaten:
 			animated_sprite.play("spit")
+			$LaunchAudio.play()
 			append_full = ""
 			sleepy_ref.process_mode = Node.PROCESS_MODE_INHERIT
 			sleepy_eaten = false
@@ -71,6 +72,7 @@ func _physics_process(delta: float) -> void:
 	if eat_time > EAT_STARTUP and is_eating:
 		is_eating = false
 		if sleepy_available and sleepy_ref and sleepy_ref.is_sleeping:
+			$EatAudio.play()
 			append_full = "_full"
 			sleepy_ref.process_mode = Node.PROCESS_MODE_DISABLED
 			sleepy_eaten = true
