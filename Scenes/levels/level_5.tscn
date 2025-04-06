@@ -200,6 +200,14 @@ _data = {
 
 [node name="Level5" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(998, 117)
+rotation = 0.459632
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
 [node name="Map" type="Node" parent="."]
 
 [node name="Ground" type="TileMapLayer" parent="Map"]
@@ -358,6 +366,7 @@ rotation = 0.445808
 collision_layer = 32
 collision_mask = 19
 script = ExtResource("14_ouu6u")
+level_to_reload = "res://Scenes/levels/level_5.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fireball/Path2D/PathFollow2D/Area"]
 position = Vector2(0, -0.5)
