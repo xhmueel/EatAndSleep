@@ -2,14 +2,20 @@ extends Node2D
 
 enum BUTTON_TYPE {PRESS, TOGGLE, TIMED, ONCE}
 
+@onready var sprite : Sprite2D = $Sprite2D
+
 @export var button_type : BUTTON_TYPE = BUTTON_TYPE.PRESS
 @export var platforms : Array[Node2D] = [];
 @export var traps : Array[Damaging] = [];
+
+@export var texture : CompressedTexture2D = load("res://Assets/buttons/press_button_red.png")
 
 var toggle_state : bool = false;
 
 var once_used = false;
 
+func _ready() -> void:
+	sprite.texture = texture 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Players"):

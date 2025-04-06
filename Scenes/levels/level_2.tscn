@@ -5,17 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_ox1we"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_843fj"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="6_d46f7"]
-[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="7_1fa6i"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="7_40hwj"]
+[ext_resource type="Texture2D" uid="uid://cout6tljvwsv2" path="res://Assets/platform.png" id="8_38c0r"]
 
 [sub_resource type="Curve2D" id="Curve2D_7sehn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -282)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -200)
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0r14"]
-size = Vector2(125, 125)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
+size = Vector2(126.5, 27)
 
 [node name="Level2" type="Node2D"]
 
@@ -31,41 +31,15 @@ tile_set = ExtResource("1_hf100")
 y_sort_origin = 1
 
 [node name="Sleepy" parent="." instance=ExtResource("2_uj3ou")]
-position = Vector2(1257, 1002)
+position = Vector2(1311, 484)
 
 [node name="Eat" parent="." instance=ExtResource("3_ox1we")]
-position = Vector2(1346, 1010)
+position = Vector2(1400, 492)
 
 [node name="Button" parent="." node_paths=PackedStringArray("platforms") instance=ExtResource("5_843fj")]
-position = Vector2(1886, 418)
-scale = Vector2(0.55, 0.55)
+position = Vector2(1901, 418)
+rotation = -1.5708
 platforms = [NodePath("../Platform")]
-
-[node name="Platform" type="Node2D" parent="."]
-position = Vector2(831, 384)
-script = ExtResource("6_d46f7")
-
-[node name="Path2D" type="Path2D" parent="Platform"]
-curve = SubResource("Curve2D_7sehn")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
-scale = Vector2(1, 2)
-shape = SubResource("RectangleShape2D_a0r14")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("7_1fa6i")
 
 [node name="Exit" parent="." instance=ExtResource("7_40hwj")]
 position = Vector2(1779, 91)
@@ -150,3 +124,33 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[center]As Sleepy press \"Shift\" to Sleep. Shadow can enter and float in dark areas[center]"
+
+[node name="Platform" type="Node2D" parent="."]
+position = Vector2(845, 384)
+script = ExtResource("6_d46f7")
+
+[node name="Path2D" type="Path2D" parent="Platform"]
+curve = SubResource("Curve2D_7sehn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform/Path2D"]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform/Path2D/PathFollow2D"]
+remote_path = NodePath("../AnimatableBody2D")
+update_rotation = false
+update_scale = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform/Path2D/PathFollow2D"]
+rotation = 1.5708
+scale = Vector2(2, 1)
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_7iup7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/Path2D/PathFollow2D/AnimatableBody2D"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("8_38c0r")
