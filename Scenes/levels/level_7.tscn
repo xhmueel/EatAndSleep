@@ -15,6 +15,10 @@
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="13_xrhwf"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_xh22w"]
 [ext_resource type="Texture2D" uid="uid://c5mdnm8najl2" path="res://Assets/backgrounds/background7.png" id="15_2f42p"]
+[ext_resource type="PackedScene" uid="uid://ego0rlmvv7as" path="res://Scenes/pause_menu.tscn" id="16_k5de1"]
+[ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="16_w4p06"]
+[ext_resource type="PackedScene" uid="uid://b2l1hmosgcutw" path="res://Scenes/transition.tscn" id="17_vudyb"]
+[ext_resource type="Script" path="res://Scripts/transition.gd" id="18_xqmlo"]
 
 [sub_resource type="Curve2D" id="Curve2D_dbv03"]
 _data = {
@@ -217,6 +221,9 @@ _data = {
 "blink": SubResource("Animation_ui853"),
 "disappear": SubResource("Animation_3l7ql")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l0ac"]
+size = Vector2(900, 319.5)
 
 [node name="Level7" type="Node2D"]
 
@@ -511,5 +518,27 @@ grow_vertical = 2
 texture = ExtResource("15_2f42p")
 flip_v = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("16_k5de1")]
+level_to_load = "res://Scenes/levels/level_5.tscn"
+
+[node name="AnimatedSprite2D" parent="CanvasLayer" instance=ExtResource("17_vudyb")]
+position = Vector2(960, 540)
+script = ExtResource("18_xqmlo")
+
+[node name="FlyingArea" type="Area2D" parent="."]
+position = Vector2(1177, 870)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("16_w4p06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyingArea"]
+position = Vector2(296, -3.25)
+shape = SubResource("RectangleShape2D_2l0ac")
+
 [connection signal="body_entered" from="Platforms/Fireball/Path2D/PathFollow2D/Area" to="Platforms/Fireball/Path2D/PathFollow2D/Area" method="_on_body_entered"]
 [connection signal="body_entered" from="Platforms/Fireball2/Path2D/PathFollow2D/Area" to="Platforms/Fireball2/Path2D/PathFollow2D/Area" method="_on_body_entered"]
+[connection signal="animation_finished" from="CanvasLayer/AnimatedSprite2D" to="CanvasLayer/AnimatedSprite2D" method="_on_animation_finished"]
+[connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
+[connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]
