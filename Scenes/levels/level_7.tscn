@@ -1,91 +1,222 @@
-[gd_scene load_steps=29 format=4 uid="uid://ej5ukvcggv70"]
+[gd_scene load_steps=36 format=4 uid="uid://ej5ukvcggv70"]
 
-[ext_resource type="Texture2D" uid="uid://bm5acadvygbds" path="res://Assets/grass_tileset.png" id="1_ocwww"]
+[ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="1_h5po6"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_6nx1b"]
 [ext_resource type="PackedScene" uid="uid://dik8ukrhyif1m" path="res://Scenes/Eat.tscn" id="3_1cra8"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="4_pknlv"]
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="5_x8m42"]
 [ext_resource type="Texture2D" uid="uid://ce8u6c0xyfusf" path="res://Assets/buttons/press_button_blue.png" id="6_4spx1"]
-[ext_resource type="Texture2D" uid="uid://btx6jxey0181n" path="res://Assets/buttons/press_button_darkblue.png" id="7_xvjrq"]
 [ext_resource type="Texture2D" uid="uid://cgfdfeqsbvk4r" path="res://Assets/buttons/press_button_gold.png" id="8_51n8m"]
-[ext_resource type="Texture2D" uid="uid://h886my33jsq2" path="res://Assets/buttons/press_button_green.png" id="9_ppgib"]
+[ext_resource type="Script" path="res://Scripts/firebal.gd" id="10_08c3a"]
 [ext_resource type="Texture2D" uid="uid://c4hpksyoe40qo" path="res://Assets/buttons/press_button_pink.png" id="10_uvje6"]
-[ext_resource type="Texture2D" uid="uid://dtgj3sjn42vmk" path="res://Assets/buttons/press_button_purple.png" id="11_aqcxk"]
-[ext_resource type="Texture2D" uid="uid://3ycip3fdkbr0" path="res://Assets/buttons/press_button_yellow.png" id="12_qpojj"]
+[ext_resource type="Script" path="res://Scripts/fireballBehavior.gd" id="11_fb4uc"]
+[ext_resource type="Texture2D" uid="uid://b5ogevp8pu50m" path="res://Assets/fireball.png" id="12_p7gbu"]
+[ext_resource type="Script" path="res://Scripts/blinking.gd" id="13_dk7ck"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="13_xrhwf"]
 [ext_resource type="Texture2D" uid="uid://cvkkeed3qk8mo" path="res://Assets/platform2.png" id="14_xh22w"]
-[ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="15_65gl8"]
 [ext_resource type="Texture2D" uid="uid://dr8jqs7qc7v64" path="res://Assets/backgrounds/background5.png" id="16_selwl"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n316"]
-texture = ExtResource("1_ocwww")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="TileSet" id="TileSet_diton"]
-tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 19
-physics_layer_1/collision_layer = 8
-physics_layer_1/collision_mask = 17
-sources/0 = SubResource("TileSetAtlasSource_4n316")
-
-[sub_resource type="Curve2D" id="Curve2D_kmcl7"]
+[sub_resource type="Curve2D" id="Curve2D_dbv03"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -220, 0, 0, 0, 0, 410, -220)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elkfk"]
 size = Vector2(126.5, 27)
 
-[sub_resource type="Curve2D" id="Curve2D_nm1i6"]
+[sub_resource type="Curve2D" id="Curve2D_iq6d2"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 270, 0, 0, 0, 0, 0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_vvj81"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -50)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_dly6b"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 0, 0, 0, 0, 0, 240, -150, 0, 0, 0, 0, -200, -150)
-}
-point_count = 4
-
-[sub_resource type="Curve2D" id="Curve2D_xjr75"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -150, 0, 0, 0, 0, 0, -320)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_o7xh3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -200, 0, 0, 0, 0, 0, -490, 0, 0, 0, 0, 105, -490)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, -171)
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_tldrc"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 370, -100, 0, 0, 0, 0, 370, -450)
-}
-point_count = 4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka1p7"]
+size = Vector2(126.5, 27)
 
-[sub_resource type="Curve2D" id="Curve2D_ug1jt"]
+[sub_resource type="Curve2D" id="Curve2D_30p6q"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -150, 0, 0, 0, 0, -280, -150)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 460)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uydse"]
+size = Vector2(126.5, 27)
+
+[sub_resource type="Curve2D" id="Curve2D_w2imv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -470, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iup7"]
-size = Vector2(125, 125)
+[sub_resource type="Curve2D" id="Curve2D_ru63d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hxcr"]
+size = Vector2(126, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuca7"]
+atlas = ExtResource("12_p7gbu")
+region = Rect2(0, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqvla"]
+atlas = ExtResource("12_p7gbu")
+region = Rect2(275, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxpjc"]
+atlas = ExtResource("12_p7gbu")
+region = Rect2(550, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r26ag"]
+atlas = ExtResource("12_p7gbu")
+region = Rect2(275, 0, 275, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1h3l2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuca7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqvla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxpjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r26ag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_l5cir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0557g"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ui853"]
+resource_name = "blink"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2, 4, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3l7ql"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pio4a"]
+_data = {
+"RESET": SubResource("Animation_l5cir"),
+"appear": SubResource("Animation_0557g"),
+"blink": SubResource("Animation_ui853"),
+"disappear": SubResource("Animation_3l7ql")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_s24tq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -270, 0)
+}
+point_count = 2
 
 [node name="Level7" type="Node2D"]
 
@@ -98,69 +229,54 @@ limit_bottom = 1080
 [node name="Map" type="Node" parent="."]
 
 [node name="Ground" type="TileMapLayer" parent="Map"]
-tile_map_data = PackedByteArray("AAALABAAAAABAAAAAAATABAAAAABAAAAAAAUABAAAAABAAAAAAAVABAAAAABAAAAAAAWABAAAAABAAAAAAAXABAAAAABAAAAAAAYABAAAAABAAAAAAAZABAAAAABAAAAAAAaABAAAAABAAAAAAAbABAAAAABAAAAAAAcABAAAAABAAAAAAAdABAAAAABAAAAAAAAABAAAAABAAAAAAABABAAAAABAAAAAAACABAAAAABAAAAAAADABAAAAABAAAAAAAEABAAAAABAAAAAAAFABAAAAABAAAAAAAGABAAAAABAAAAAAAHABAAAAABAAAAAAAIABAAAAABAAAAAAAJABAAAAABAAAAAAAKABAAAAABAAAAAAAMABAAAAABAAAAAAARABAAAAABAAAAAAASABAAAAABAAAAAAD/////AAABAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAD//wUAAAABAAAAAAD//wYAAAABAAAAAAD//wcAAAABAAAAAAD//wgAAAABAAAAAAD//wkAAAABAAAAAAD//woAAAABAAAAAAD//wsAAAABAAAAAAD//wwAAAABAAAAAAD//w0AAAABAAAAAAD//w4AAAABAAAAAAD//w8AAAABAAAAAAD//xAAAAABAAAAAAAeAP//AAABAAAAAAAeAAAAAAABAAAAAAAeAAEAAAABAAAAAAAeAAIAAAABAAAAAAAeAAMAAAABAAAAAAAeAAQAAAABAAAAAAAeAAUAAAABAAAAAAAeAAYAAAABAAAAAAAeAAcAAAABAAAAAAAeAAgAAAABAAAAAAAeAAkAAAABAAAAAAAeAAoAAAABAAAAAAAeAAsAAAABAAAAAAAeAAwAAAABAAAAAAAeAA0AAAABAAAAAAAeAA4AAAABAAAAAAAeAA8AAAABAAAAAAAeABAAAAABAAAAAAAHAAMAAAABAAAAAAALAAMAAAABAAAAAAAMAAMAAAABAAAAAAANAAMAAAABAAAAAAARAAMAAAABAAAAAAASAAMAAAABAAAAAAATAAMAAAABAAAAAAAUAAMAAAABAAAAAAAVAAMAAAABAAAAAAAWAAMAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAQAAQAAAABAAAAAAAQAAMAAAABAAAAAAANAAQAAAABAAAAAAAIAAMAAAABAAAAAAAJAAMAAAABAAAAAAAKAAMAAAABAAAAAAAXAAMAAAABAAAAAAAYAAMAAAABAAAAAAAYAAQAAAABAAAAAAAXAAQAAAABAAAAAAAWAAQAAAABAAAAAAAVAAQAAAABAAAAAAAUAAQAAAABAAAAAAATAAQAAAABAAAAAAASAAQAAAABAAAAAAARAAQAAAABAAAAAAAMAAQAAAABAAAAAAALAAQAAAABAAAAAAAKAAQAAAABAAAAAAAJAAQAAAABAAAAAAAIAAQAAAABAAAAAAAHAAQAAAABAAAAAAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAAQABAAAAABAAAAAAAPABAAAAABAAAAAAAOABAAAAABAAAAAAANABAAAAABAAAAAAAPAA8AAAABAAAAAAAOAA8AAAABAAAAAAAOAA4AAAABAAAAAAAPAA4AAAABAAAAAAAPAA0AAAABAAAAAAAPAAwAAAABAAAAAAAPAAsAAAABAAAAAAAPAAoAAAABAAAAAAAOAAoAAAABAAAAAAAOAAkAAAABAAAAAAAOAAgAAAABAAAAAAAOAAcAAAABAAAAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAPAAUAAAABAAAAAAAPAAQAAAABAAAAAAAPAAMAAAABAAAAAAAOAAMAAAABAAAAAAAOAAQAAAABAAAAAAAOAAUAAAABAAAAAAAPAAgAAAABAAAAAAAPAAcAAAABAAAAAAAPAAkAAAABAAAAAAAOAAsAAAABAAAAAAAOAAwAAAABAAAAAAAOAA0AAAABAAAAAAA=")
-tile_set = SubResource("TileSet_diton")
+tile_map_data = PackedByteArray("AAALABAABgAAAAAAAAATABAABgAAAAAAAAAUABAABgAAAAAAAAAVABAABgAAAAAAAAAWABAABgAAAAAAAAAXABAABgAAAAAAAAAYABAABgAAAAAAAAAZABAABgAAAAAAAAAaABAABgAAAAAAAAAbABAABgAAAAAAAAAcABAABgAAAAAAAAAdABAABgAAAAAAAAAAABAABgAAAAAAAAABABAABgAAAAAAAAACABAABgAAAAAAAAADABAABgAAAAAAAAAEABAABgAAAAAAAAAFABAABgAAAAAAAAAGABAABgAAAAAAAAAHABAABgAAAAAAAAAIABAABgAAAAAAAAAJABAABgAAAAAAAAAKABAABgAAAAAAAAAMABAABgAAAAAAAAANABAABgAAAAAAAAARABAABgAAAAAAAAASABAABgAAAAAAAAD/////BgAAAAAAAAD//wAABgAAAAAAAAD//wEABgAAAAAAAAD//wIABgAAAAAAAAD//wMABgAAAAAAAAD//wQABgAAAAAAAAD//wUABgAAAAAAAAD//wYABgAAAAAAAAD//wcABgAAAAAAAAD//wgABgAAAAAAAAD//wkABgAAAAAAAAD//woABgAAAAAAAAD//wsABgAAAAAAAAD//wwABgAAAAAAAAD//w0ABgAAAAAAAAD//w4ABgAAAAAAAAD//w8ABgAAAAAAAAD//xAABgAAAAAAAAAeAP//BgAAAAAAAAAeAAAABgAAAAAAAAAeAAEABgAAAAAAAAAeAAIABgAAAAAAAAAeAAMABgAAAAAAAAAeAAQABgAAAAAAAAAeAAUABgAAAAAAAAAeAAYABgAAAAAAAAAeAAcABgAAAAAAAAAeAAgABgAAAAAAAAAeAAkABgAAAAAAAAAeAAoABgAAAAAAAAAeAAsABgAAAAAAAAAeAAwABgAAAAAAAAAeAA0ABgAAAAAAAAAeAA4ABgAAAAAAAAAeAA8ABgAAAAAAAAAeABAABgAAAAAAAAAOABAABgAAAAAAAAAPABAABgAAAAAAAAAQABAABgAAAAAAAAAMAA8ABgAAAAAAAAANAA8ABgAAAAAAAAAOAA8ABgAAAAAAAAAPAA8ABgAAAAAAAAAPAA4ABgAAAAAAAAAPAA0ABgAAAAAAAAAPAAwABgAAAAAAAAAPAAsABgAAAAAAAAAOAAwABgAAAAAAAAAOAA0ABgAAAAAAAAAOAA4ABgAAAAAAAAANAA4ABgAAAAAAAAANAA0ABgAAAAAAAAAMAA4ABgAAAAAAAAALAA8ABgAAAAAAAAALAA4AAQAIABAAABAKAA8AAQAIABAAABAMAA0AAQAIABAAABANAAwAAQAIABAAABAOAAsAAQAIABAAABAQAAsABgAAAAAAAAARAAsABgAAAAAAAAASAAsABgAAAAAAAAATAAsABgAAAAAAAAAUAAsABgAAAAAAAAAVAAsABgAAAAAAAAAWAAsABgAAAAAAAAAXAAsABgAAAAAAAAAYAAsABgAAAAAAAAAaAAMABgAAAAAAAAAZAAMABgAAAAAAAAAYAAMABgAAAAAAAAAXAAMABgAAAAAAAAAWAAMABgAAAAAAAAAVAAMABgAAAAAAAAAUAAMABgAAAAAAAAATAAMABgAAAAAAAAASAAMABgAAAAAAAAARAAMABgAAAAAAAAAQAAMABgAAAAAAAAAPAAMABgAAAAAAAAAOAAMABgAAAAAAAAANAAMABgAAAAAAAAA=")
+tile_set = ExtResource("1_h5po6")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Map"]
+tile_map_data = PackedByteArray("AAAZAAsAAQAFAAYAAFAaAAsAAQAFAAUAAFAbAAsAAQAFAAQAAFAcAAsAAQAFAAMAAFAdAAsAAQAFAAIAAFAQAAwAAgADAAQAAAAQAA0AAgADAAUAAAAQAA4AAgADAAYAAAAQAA8AAgADAAcAAAARAAwAAgAEAAQAAAARAA0AAgAEAAUAAAARAA4AAgAEAAYAAAARAA8AAgAEAAcAAAASAAwAAgAFAAQAAAASAA0AAgAFAAUAAAASAA4AAgAFAAYAAAASAA8AAgAFAAcAAAATAAwAAgADAAQAAAATAA0AAgADAAUAAAATAA4AAgADAAYAAAATAA8AAgADAAcAAAAUAAwAAgAEAAQAAAAUAA0AAgAEAAUAAAAUAA4AAgAEAAYAAAAUAA8AAgAEAAcAAAAVAAwAAgAFAAQAAAAVAA0AAgAFAAUAAAAVAA4AAgAFAAYAAAAVAA8AAgAFAAcAAAAWAAwAAgADAAQAAAAWAA0AAgADAAUAAAAWAA4AAgADAAYAAAAWAA8AAgADAAcAAAAXAAwAAgAEAAQAAAAXAA0AAgAEAAUAAAAXAA4AAgAEAAYAAAAXAA8AAgAEAAcAAAAYAAwAAgAFAAQAAAAYAA0AAgAFAAUAAAAYAA4AAgAFAAYAAAAYAA8AAgAFAAcAAAAZAAwAAgADAAQAAAAZAA0AAgADAAUAAAAZAA4AAgADAAYAAAAZAA8AAgADAAcAAAAaAAwAAgAEAAQAAAAaAA0AAgAEAAUAAAAaAA4AAgAEAAYAAAAaAA8AAgAEAAcAAAAbAAwAAgAFAAQAAAAbAA0AAgAFAAUAAAAbAA4AAgAFAAYAAAAbAA8AAgAFAAcAAAAcAAwAAgADAAQAAAAcAA0AAgADAAUAAAAcAA4AAgADAAYAAAAcAA8AAgADAAcAAAAdAAwAAgAEAAQAAAAdAA0AAgAEAAUAAAAdAA4AAgAEAAYAAAAdAA8AAgAEAAcAAAAAAAoABAADAAwAAAABAAoABAADAAwAAAACAAoABAADAAwAAAACAAkABAADAAwAAAACAAgABAADAAwAAAACAAcAAwADAAUAAAACAAYAAwADAAQAAAACAAUABAADAAwAAAAAAAkAAwADAAcAAAABAAkAAwAEAAcAAAAFAAUABAADAAwAAAAFAAYAAwAGAAQAAAAEAAUABAADAAwAAAAEAAYAAwAFAAQAAAADAAUABAADAAwAAAADAAYAAwAEAAQAAAAJAAYAAwAGAAQAAAAIAAYAAwAFAAQAAAAHAAUABAADAAwAAAAHAAYAAwAEAAQAAAAGAAUABAADAAwAAAAGAAYAAwADAAQAAAAKAAYAAwADAAQAAAAKAAcAAwADAAUAAAAJAAcAAwAGAAUAAAAIAAcAAwAFAAUAAAAHAAcAAwAEAAUAAAAGAAcAAwADAAUAAAAFAAcAAwAGAAUAAAAEAAcAAwAFAAUAAAADAAcAAwAEAAUAAAADAAgABAADAAwAAAAEAAgABAADAAwAAAAFAAgABAADAAwAAAAGAAgABAADAAwAAAAHAAgABAADAAwAAAAIAAgABAADAAwAAAAJAAgABAADAAwAAAAKAAgABAADAAwAAAAAAAUABAADAAwAAAAAAAYAAwADAAQAAAAAAAcAAwADAAUAAAAAAAgAAwADAAYAAAABAAUABAADAAwAAAABAAYAAwAEAAQAAAABAAcAAwAEAAUAAAABAAgAAwAEAAYAAAALAAYABAADAAwAAAALAAcABAADAAwAAAALAAgABAADAAwAAAALAAUABAADAAwAAAAKAAUABAADAAwAAAAJAAUABAADAAwAAAAIAAUABAADAAwAAAA=")
+tile_set = ExtResource("1_h5po6")
 
 [node name="Sleepy" parent="." instance=ExtResource("2_6nx1b")]
-position = Vector2(59, 1013)
+position = Vector2(88, 1011)
 
 [node name="Eat" parent="." instance=ExtResource("3_1cra8")]
-position = Vector2(1862, 1013)
+position = Vector2(206, 1011)
 
 [node name="Exit" parent="." instance=ExtResource("4_pknlv")]
-position = Vector2(957, 98)
+position = Vector2(1576, 98)
 level_to_load = "res://Scenes/main_menu.tscn"
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(957, 78)
 
 [node name="Button" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(-810, 930)
+position = Vector2(298, 611)
 platforms = [NodePath("../../Platforms/Platform")]
 
 [node name="Button2" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(-646, 930)
+position = Vector2(83, 801)
+rotation = 1.5708
 platforms = [NodePath("../../Platforms/Platform2")]
 texture = ExtResource("6_4spx1")
 
 [node name="Button3" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(-394, 930)
+position = Vector2(771, 930)
 platforms = [NodePath("../../Platforms/Platform3")]
-texture = ExtResource("7_xvjrq")
-
-[node name="Button4" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(-211, 930)
-platforms = [NodePath("../../Platforms/Platform4")]
 texture = ExtResource("8_51n8m")
 
-[node name="Button5" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(203, 930)
+[node name="Button4" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
+position = Vector2(206, 97)
 platforms = [NodePath("../../Platforms/Platform5")]
-texture = ExtResource("9_ppgib")
-
-[node name="Button6" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(367, 930)
-platforms = [NodePath("../../Platforms/Platform6")]
 texture = ExtResource("10_uvje6")
-
-[node name="Button7" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(627, 930)
-platforms = [NodePath("../../Platforms/Platform7")]
-texture = ExtResource("11_aqcxk")
-
-[node name="Button8" parent="Buttons" node_paths=PackedStringArray("platforms") instance=ExtResource("5_x8m42")]
-position = Vector2(810, 930)
-platforms = [NodePath("../../Platforms/Platform8")]
-texture = ExtResource("12_qpojj")
 
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Platform" type="Node2D" parent="Platforms"]
-position = Vector2(1208, 725)
+position = Vector2(1536, 498)
 script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform"]
-curve = SubResource("Curve2D_kmcl7")
+curve = SubResource("Curve2D_dbv03")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform/Path2D"]
 rotates = false
@@ -172,7 +288,6 @@ update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
 collision_layer = 4
 collision_mask = 19
 
@@ -185,14 +300,14 @@ modulate = Color(1, 0, 0, 1)
 texture = ExtResource("14_xh22w")
 
 [node name="Platform2" type="Node2D" parent="Platforms"]
-position = Vector2(1744, 141)
+z_index = 1
+position = Vector2(277, 668)
 script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform2"]
-curve = SubResource("Curve2D_nm1i6")
+curve = SubResource("Curve2D_iq6d2")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform2/Path2D"]
-position = Vector2(0, 270)
 rotates = false
 loop = false
 
@@ -202,24 +317,24 @@ update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform2/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
 collision_layer = 4
 collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
 position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
+shape = SubResource("RectangleShape2D_ka1p7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform2/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(0.23, 1, 0.9615, 1)
+modulate = Color(0.231373, 1, 0.960784, 1)
 texture = ExtResource("14_xh22w")
 
 [node name="Platform3" type="Node2D" parent="Platforms"]
-position = Vector2(1467, 958)
+z_index = 1
+position = Vector2(76, 204)
 script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform3"]
-curve = SubResource("Curve2D_vvj81")
+curve = SubResource("Curve2D_30p6q")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform3/Path2D"]
 rotates = false
@@ -231,24 +346,25 @@ update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform3/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
 collision_layer = 4
 collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
 position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
+shape = SubResource("RectangleShape2D_uydse")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform3/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(0, 0.5, 1, 1)
+modulate = Color(1, 0.682353, 0, 1)
 texture = ExtResource("14_xh22w")
 
 [node name="Platform4" type="Node2D" parent="Platforms"]
-position = Vector2(1609, 779)
+position = Vector2(1384, 498)
 script = ExtResource("13_xrhwf")
+is_loop_path = true
+is_start_moving = true
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform4"]
-curve = SubResource("Curve2D_dly6b")
+curve = SubResource("Curve2D_w2imv")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform4/Path2D"]
 rotates = false
@@ -260,27 +376,62 @@ update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform4/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
 collision_layer = 4
 collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4/Path2D/PathFollow2D/AnimatableBody2D"]
 position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
+shape = SubResource("RectangleShape2D_ka1p7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform4/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(1, 0.683333, 0, 1)
 texture = ExtResource("14_xh22w")
 
+[node name="Fireball" type="Node2D" parent="Platforms/Platform4"]
+z_index = 1
+position = Vector2(70, 399)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("10_08c3a")
+is_moving = false
+
+[node name="Path2D" type="Path2D" parent="Platforms/Platform4/Fireball"]
+curve = SubResource("Curve2D_ru63d")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform4/Fireball/Path2D"]
+rotation = 0.013824
+rotates = false
+
+[node name="Area" type="Area2D" parent="Platforms/Platform4/Fireball/Path2D/PathFollow2D"]
+rotation = 0.445808
+collision_layer = 32
+collision_mask = 19
+script = ExtResource("11_fb4uc")
+level_to_reload = "res://Scenes/levels/level_7.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4/Fireball/Path2D/PathFollow2D/Area"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1hxcr")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Platforms/Platform4/Fireball/Path2D/PathFollow2D/Area"]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_1h3l2")
+autoplay = "default"
+
+[node name="Blinking" type="Node2D" parent="Platforms/Platform4/Fireball/Path2D/PathFollow2D/Area"]
+script = ExtResource("13_dk7ck")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform4/Fireball"]
+libraries = {
+"": SubResource("AnimationLibrary_pio4a")
+}
+
 [node name="Platform5" type="Node2D" parent="Platforms"]
-position = Vector2(271, 824)
+position = Vector2(760, 207)
 script = ExtResource("13_xrhwf")
 
 [node name="Path2D" type="Path2D" parent="Platforms/Platform5"]
-curve = SubResource("Curve2D_xjr75")
+curve = SubResource("Curve2D_s24tq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform5/Path2D"]
-position = Vector2(0, -150)
 rotates = false
 loop = false
 
@@ -290,326 +441,16 @@ update_rotation = false
 update_scale = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform5/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
 collision_layer = 4
 collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform5/Path2D/PathFollow2D/AnimatableBody2D"]
 position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
+shape = SubResource("RectangleShape2D_uydse")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform5/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(0.417, 1, 0.34, 1)
+modulate = Color(0.964706, 0.321569, 1, 1)
 texture = ExtResource("14_xh22w")
-
-[node name="Platform6" type="Node2D" parent="Platforms"]
-position = Vector2(69, 690)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/Platform6"]
-curve = SubResource("Curve2D_o7xh3")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform6/Path2D"]
-position = Vector2(0, -200)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform6/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_rotation = false
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform6/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform6/Path2D/PathFollow2D/AnimatableBody2D"]
-position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform6/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(0.966, 0.32, 1, 1)
-texture = ExtResource("14_xh22w")
-
-[node name="Platform7" type="Node2D" parent="Platforms"]
-position = Vector2(447, 951)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/Platform7"]
-curve = SubResource("Curve2D_tldrc")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform7/Path2D"]
-position = Vector2(0, -1)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform7/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_rotation = false
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform7/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform7/Path2D/PathFollow2D/AnimatableBody2D"]
-position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform7/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(0.4, 0, 1, 1)
-texture = ExtResource("14_xh22w")
-
-[node name="Platform8" type="Node2D" parent="Platforms"]
-position = Vector2(666, 654)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/Platform8"]
-curve = SubResource("Curve2D_ug1jt")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/Platform8/Path2D"]
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/Platform8/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_rotation = false
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/Platform8/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 1)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform8/Path2D/PathFollow2D/AnimatableBody2D"]
-position = Vector2(-0.75, -0.5)
-shape = SubResource("RectangleShape2D_elkfk")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform8/Path2D/PathFollow2D/AnimatableBody2D"]
-modulate = Color(1, 0.983333, 0, 1)
-texture = ExtResource("14_xh22w")
-
-[node name="PlatformA" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(3505, 770)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformA"]
-curve = SubResource("Curve2D_kmcl7")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformA/Path2D"]
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformA/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformA/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformA/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformA/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
-
-[node name="PlatformB" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(4041, 186)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformB"]
-curve = SubResource("Curve2D_nm1i6")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformB/Path2D"]
-position = Vector2(0, 270)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformB/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformB/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformB/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformB/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
-
-[node name="PlatformC" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(3764, 1003)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformC"]
-curve = SubResource("Curve2D_vvj81")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformC/Path2D"]
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformC/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformC/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformC/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformC/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
-
-[node name="PlatformD" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(3906, 824)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformD"]
-curve = SubResource("Curve2D_dly6b")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformD/Path2D"]
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformD/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformD/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformD/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformD/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
-
-[node name="PlatformE" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(2568, 869)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformE"]
-curve = SubResource("Curve2D_xjr75")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformE/Path2D"]
-position = Vector2(0, -150)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformE/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformE/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformE/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformE/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
-
-[node name="PlatformF" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(2366, 735)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformF"]
-curve = SubResource("Curve2D_o7xh3")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformF/Path2D"]
-position = Vector2(0, -200)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformF/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformF/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformF/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformF/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
-
-[node name="PlatformG" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(2744, 996)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformG"]
-curve = SubResource("Curve2D_tldrc")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformG/Path2D"]
-position = Vector2(0, -1)
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformG/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformG/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformG/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformG/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
-
-[node name="PlatformH" type="Node2D" parent="Platforms"]
-visible = false
-position = Vector2(2963, 699)
-script = ExtResource("13_xrhwf")
-
-[node name="Path2D" type="Path2D" parent="Platforms/PlatformH"]
-curve = SubResource("Curve2D_ug1jt")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Platforms/PlatformH/Path2D"]
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platforms/PlatformH/Path2D/PathFollow2D"]
-remote_path = NodePath("../AnimatableBody2D")
-update_scale = false
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platforms/PlatformH/Path2D/PathFollow2D"]
-scale = Vector2(0.8, 0.2)
-collision_layer = 4
-collision_mask = 19
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/PlatformH/Path2D/PathFollow2D/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_7iup7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/PlatformH/Path2D/PathFollow2D/AnimatableBody2D"]
-texture = ExtResource("15_65gl8")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -630,3 +471,5 @@ offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_selwl")
+
+[connection signal="body_entered" from="Platforms/Platform4/Fireball/Path2D/PathFollow2D/Area" to="Platforms/Platform4/Fireball/Path2D/PathFollow2D/Area" method="_on_body_entered"]
