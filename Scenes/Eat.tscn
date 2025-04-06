@@ -183,7 +183,7 @@ region = Rect2(1631, 0, 233, 382)
 [sub_resource type="SpriteFrames" id="SpriteFrames_8wuvl"]
 animations = [{
 "frames": [{
-"duration": 4.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_vjlrt")
 }, {
 "duration": 1.0,
@@ -388,7 +388,7 @@ shape = SubResource("RectangleShape2D_qvvek")
 position = Vector2(0, -95)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8wuvl")
-animation = &"land_full"
+animation = &"eat"
 autoplay = "idle"
 
 [connection signal="body_entered" from="EatArea" to="." method="_on_eat_area_body_entered"]

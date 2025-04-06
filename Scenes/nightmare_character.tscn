@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://ba6kwjurgqlaq"]
+[gd_scene load_steps=36 format=3 uid="uid://ba6kwjurgqlaq"]
 
 [ext_resource type="Script" path="res://Scripts/nightmare_character.gd" id="1_5rfhl"]
+[ext_resource type="Texture2D" uid="uid://b4kt0us2qprlo" path="res://Assets/nightmare_jump.png" id="2_17ts8"]
 [ext_resource type="Texture2D" uid="uid://dvwpnvfj2g2bo" path="res://Assets/nightmare_walk.png" id="2_n13p7"]
 [ext_resource type="Texture2D" uid="uid://dunuowyel28aa" path="res://Assets/nightmare_rise.png" id="3_g7v4i"]
 
@@ -8,9 +9,45 @@
 radius = 26.0
 height = 150.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_77d5h"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(1146, 0, 191, 327)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xlthf"]
 atlas = ExtResource("2_n13p7")
 region = Rect2(495, 0, 165, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omfes"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(0, 0, 191, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo2vq"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(191, 0, 191, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k15y"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(382, 0, 191, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py0xu"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(573, 0, 191, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272dp"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(764, 0, 191, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqjbk"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(955, 0, 191, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0vc2"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(1337, 0, 191, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okt1g"]
+atlas = ExtResource("2_17ts8")
+region = Rect2(1337, 0, 191, 327)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pxqt"]
 atlas = ExtResource("3_g7v4i")
@@ -92,11 +129,53 @@ region = Rect2(1485, 0, 165, 327)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_77d5h")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xlthf")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omfes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo2vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k15y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py0xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqjbk")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_n0vc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okt1g")
+}],
+"loop": false,
+"name": &"land",
+"speed": 21.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -179,5 +258,5 @@ shape = SubResource("CapsuleShape2D_3uync")
 position = Vector2(0, -82)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_pyf88")
-animation = &"wake"
+animation = &"jump"
 autoplay = "wake"

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/button.gd" id="4_nxyl1"]
 [ext_resource type="Texture2D" uid="uid://c36vqx7xhpf4o" path="res://icon.svg" id="5_yojd7"]
 [ext_resource type="PackedScene" uid="uid://dc07i21t8p264" path="res://Scenes/spikes.tscn" id="6_0ot5l"]
-[ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="7_4665n"]
+[ext_resource type="PackedScene" path="res://Scenes/button.tscn" id="7_4665n"]
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="8_yvdqh"]
 [ext_resource type="PackedScene" uid="uid://cmici5dcwxg8r" path="res://Scenes/exit.tscn" id="9_oatok"]
 
