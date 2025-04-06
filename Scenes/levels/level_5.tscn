@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dnn83k2a68qc1"]
+[gd_scene load_steps=33 format=4 uid="uid://dnn83k2a68qc1"]
 
 [ext_resource type="TileSet" uid="uid://dapxajgru2g8v" path="res://tilemap.tres" id="2_io5co"]
 [ext_resource type="PackedScene" uid="uid://bs8vjgp70nnqg" path="res://Scenes/sleep_character.tscn" id="2_mr2n8"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://boj4x0h174v1j" path="res://Scenes/button.tscn" id="10_djcfo"]
 [ext_resource type="Texture2D" uid="uid://c38jowi0cgxr" path="res://Assets/backgrounds/background4.png" id="10_hv025"]
 [ext_resource type="Script" path="res://Scripts/nightmare_flying_area.gd" id="12_xsb7b"]
+[ext_resource type="Script" path="res://Scripts/firebal.gd" id="13_chuiw"]
+[ext_resource type="Script" path="res://Scripts/fireballBehavior.gd" id="14_ouu6u"]
+[ext_resource type="Texture2D" uid="uid://b5ogevp8pu50m" path="res://Assets/fireball.png" id="15_nk0hl"]
+[ext_resource type="Script" path="res://Scripts/blinking.gd" id="16_cv5m6"]
 
 [sub_resource type="Curve2D" id="Curve2D_6dlps"]
 _data = {
@@ -30,6 +34,169 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_peomr"]
 size = Vector2(373, 749.5)
+
+[sub_resource type="Curve2D" id="Curve2D_ru63d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hxcr"]
+size = Vector2(126, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuca7"]
+atlas = ExtResource("15_nk0hl")
+region = Rect2(0, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqvla"]
+atlas = ExtResource("15_nk0hl")
+region = Rect2(275, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxpjc"]
+atlas = ExtResource("15_nk0hl")
+region = Rect2(550, 0, 275, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r26ag"]
+atlas = ExtResource("15_nk0hl")
+region = Rect2(275, 0, 275, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1h3l2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuca7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqvla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxpjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r26ag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_l5cir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0557g"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ui853"]
+resource_name = "blink"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2, 4, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_3l7ql"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Area/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Area:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pio4a"]
+_data = {
+"RESET": SubResource("Animation_l5cir"),
+"appear": SubResource("Animation_0557g"),
+"blink": SubResource("Animation_ui853"),
+"disappear": SubResource("Animation_3l7ql")
+}
 
 [node name="Level5" type="Node2D"]
 
@@ -173,5 +340,42 @@ script = ExtResource("12_xsb7b")
 position = Vector2(46.5, 218.25)
 shape = SubResource("RectangleShape2D_peomr")
 
+[node name="Fireball" type="Node2D" parent="."]
+position = Vector2(998, 117)
+script = ExtResource("13_chuiw")
+speed = 300
+is_blinking = false
+
+[node name="Path2D" type="Path2D" parent="Fireball"]
+curve = SubResource("Curve2D_ru63d")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Fireball/Path2D"]
+rotation = 0.013824
+rotates = false
+
+[node name="Area" type="Area2D" parent="Fireball/Path2D/PathFollow2D"]
+rotation = 0.445808
+collision_layer = 32
+collision_mask = 19
+script = ExtResource("14_ouu6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fireball/Path2D/PathFollow2D/Area"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1hxcr")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Fireball/Path2D/PathFollow2D/Area"]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_1h3l2")
+autoplay = "default"
+
+[node name="Blinking" type="Node2D" parent="Fireball/Path2D/PathFollow2D/Area"]
+script = ExtResource("16_cv5m6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fireball"]
+libraries = {
+"": SubResource("AnimationLibrary_pio4a")
+}
+
 [connection signal="body_entered" from="FlyingArea" to="FlyingArea" method="_on_body_entered"]
 [connection signal="body_exited" from="FlyingArea" to="FlyingArea" method="_on_body_exited"]
+[connection signal="body_entered" from="Fireball/Path2D/PathFollow2D/Area" to="Fireball/Path2D/PathFollow2D/Area" method="_on_body_entered"]
