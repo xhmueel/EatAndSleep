@@ -109,7 +109,7 @@ func process_awake(delta : float) -> void:
 	else:
 		was_grounded = false
 	
-	if Input.is_action_just_pressed("sleep_toggle"):
+	if Input.is_action_just_pressed("sleep_toggle") and get_tree().current_scene.name != "Level1":
 		is_sleeping = true
 		animated_sprite.play("falling_asleep")
 		animated_sprite.position.y += SLEEP_OFFSET_Y
